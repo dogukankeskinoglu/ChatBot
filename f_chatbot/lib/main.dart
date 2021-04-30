@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "ChatBot",
       routes: {
-        '/': (context) => ButtonPage(),
+        '/': (context) => Job(),
         '/loginHome': (context) => LoginHome(),
         '/jobPage': (context) => Job(),
         '/loginPersonal': (context) =>

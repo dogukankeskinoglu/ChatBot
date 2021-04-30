@@ -1,44 +1,80 @@
 import 'package:f_chatbot/core/component/card/job_card.dart';
+import 'package:f_chatbot/core/component/slidable/slidableWidget.dart';
+import 'package:f_chatbot/core/enum/customOrder.dart';
+import 'package:f_chatbot/core/localizate/application_string.dart';
 import 'package:f_chatbot/model/MVVMJob/JobViewModel.dart';
 import 'package:f_chatbot/model/job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
 
 class JobView extends JobViewModel {
-  String dropdownValue = "Tarihe göre azalan";
-  Color colorCardIcon = Colors.blue;
   TextEditingController text = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    widgetOptions.add(buildBodyAllJobColumn());
+    widgetOptions.add(buildBodyAllJobApply());
+  }
+
+  ListView buildBodyAllJobApply() {
+    return ListView.builder(
+      itemCount: jobListApply.length,
+      itemBuilder: (context, index) => JobCardWidget(jobListApply[index]),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
-          child: buildBodyColumn()),
+      body: widgetOptions.elementAt(selectedIndex),
+      bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
 
-  Column buildBodyColumn() {
+  BottomNavigationBar buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.work),
+          label: "Job",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.account_circle),
+          label: "Profile",
+        ),
+      ],
+      currentIndex: selectedIndex,
+      selectedItemColor: Colors.amber[800],
+      onTap: bottomNavigatorFunc,
+    );
+  }
+
+  void bottomNavigatorFunc(value) {
+    setState(() {
+      selectedIndex = value;
+      if (selectedIndex == 1) {
+        widgetOptions[1] = buildBodyAllJobApply();
+      }
+    });
+  }
+
+  Padding buildPadding() {
+    return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8),
+        child: buildBodyAllJobColumn());
+  }
+
+  Column buildBodyAllJobColumn() {
     return Column(
       children: [
+        Expanded(child: searchBar()),
+        Expanded(child: buildDropdownButton()),
         Expanded(
-          flex: 1,
-          child: buildRowSearchAndOrder(),
-        ),
-        Expanded(
-          flex: 9,
+          flex: 15,
           child: buildListView(),
         ),
-        //buildElevatedButton()
-      ],
-    );
-  }
-
-  Row buildRowSearchAndOrder() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Expanded(child: searchBar()),
       ],
     );
   }
@@ -55,74 +91,62 @@ class JobView extends JobViewModel {
     return AppBar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [Text("Selam Önder"), Text("Senin İçin bunları buldum")],
+        children: [
+          Text("Selam Önder"),
+          Text(ApplicationStrings.instance.jobPageTitle)
+        ],
       ),
     );
   }
 
   DropdownButton<String> buildDropdownButton() {
     return DropdownButton(
-        hint: Row(
-          children: [Text("Gelişmiş Sıralama")],
-        ),
         icon: Icon(Icons.arrow_downward_sharp),
         value: dropdownValue,
-        items: <String>[
-          'Tarihe göre azalan',
-          'Tarihe göre artan',
-          'Domaine göre azalan',
-          'Domaine göre artan'
-        ].map<DropdownMenuItem<String>>((String value) {
+        items: <CustomOrderEnums>[
+          CustomOrderEnums.tarih_artan,
+          CustomOrderEnums.tarih_azalan,
+          CustomOrderEnums.sirket_artan,
+          CustomOrderEnums.sirket_azalan,
+          CustomOrderEnums.puan_artan,
+          CustomOrderEnums.puan_azalan,
+        ].map<DropdownMenuItem<String>>((CustomOrderEnums value) {
           return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
+            value: value.text,
+            child: Text(value.text),
           );
         }).toList(),
         onChanged: (String? newValue) {
-          setState(() {
+          print("O:$dropdownValue N:$newValue G:N");
+          if (dropdownValue != newValue) {
+            print("O:$dropdownValue N:$newValue G:E");
+            CustomOrderEnums.values.forEach((element) {
+              if (element.text == newValue) {
+                orderByMatch(element);
+              }
+            });
             dropdownValue = newValue!;
-          });
+            widgetOptions[0] = buildBodyAllJobColumn();
+            setState(() {});
+          }
         });
-  }
-
-  ElevatedButton buildElevatedButton() {
-    return ElevatedButton(
-      onPressed: () {
-        JobModel s = JobModel(
-            "Machine Learning-Part Time",
-            "DataBoss Security& Analytics A.Ş",
-            "Ankara Turkey",
-            "3 Gün Önce",
-            "100");
-        jobList.add(s);
-        setState(() {});
-      },
-      child: Text("Tıklayınız"),
-    );
   }
 
   ListView buildListView() {
     return ListView.builder(
         itemCount: jobList.length,
-        itemBuilder: (context, index) => InkWell(
-              child: checkCardSelected(index),
-              onTap: () {
-                selectedIndex.contains(index)
-                    ? selectedIndex.remove(index)
-                    : selectedIndex.add(index);
-                setState(() {});
-              },
-            ));
-  }
-
-  JobCardWidget checkCardSelected(int index) {
-    return JobCardWidget(jobList[index],
-        selectedIndex.contains(index) ? Colors.red : Colors.grey);
+        itemBuilder: (context, index) {
+          final item = jobList[index];
+          return SlidableWidget(
+              child: JobCardWidget(item),
+              onDismissed: (action) =>
+                  dismissSlidableItem(context, item, action));
+        });
   }
 
   Widget searchBar() {
     return OutlineSearchBar(
-      hintText: "Şirketi giriniz",
+      hintText: ApplicationStrings.instance.jobSearchTitle,
       textEditingController: text,
       onSearchButtonPressed: (value) {
         print(value);

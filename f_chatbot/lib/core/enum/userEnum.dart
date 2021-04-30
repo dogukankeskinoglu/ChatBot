@@ -11,9 +11,9 @@ extension UserEnumPath on UserEnum {
   String get type {
     switch (this) {
       case UserEnum.Candidate:
-        return "candidate";
+        return "Candidate";
       case UserEnum.Company:
-        return "company";
+        return "Company";
       default:
         return throw UserEnumException(this);
     }

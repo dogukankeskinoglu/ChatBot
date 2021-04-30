@@ -4,17 +4,17 @@ class ContainerButton extends StatelessWidget {
   final VoidCallback containerOnpressed;
   final Color containerColor;
   final String containerText;
-  final double containerHeight;
-  final double containerWidth;
-  final Radius containerRadius;
+  final double containerHeightRate;
+  final double containerWidthRate;
+  final double containerRadius;
 
   const ContainerButton(
       {Key? key,
       required this.containerOnpressed,
       required this.containerColor,
       required this.containerText,
-      required this.containerHeight,
-      required this.containerWidth,
+      required this.containerHeightRate,
+      required this.containerWidthRate,
       required this.containerRadius})
       : super(key: key);
 
@@ -25,12 +25,13 @@ class ContainerButton extends StatelessWidget {
         child: Text(
           containerText,
           style: TextStyle(color: Colors.white),
+          textAlign: TextAlign.start,
         ),
         alignment: Alignment.center,
-        height: containerHeight,
-        width: containerWidth,
+        height: MediaQuery.of(context).size.height * containerHeightRate,
+        width: MediaQuery.of(context).size.width * containerWidthRate,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(containerRadius),
+            borderRadius: BorderRadius.circular(containerRadius),
             color: containerColor),
       ),
       onTap: containerOnpressed,

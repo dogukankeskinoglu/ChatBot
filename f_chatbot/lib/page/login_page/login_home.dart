@@ -1,5 +1,6 @@
 import 'package:f_chatbot/core/component/container/inkwellContainer.dart';
 import 'package:f_chatbot/core/enum/imagePath.dart';
+import 'package:f_chatbot/core/localizate/application_string.dart';
 import 'package:flutter/material.dart';
 
 class LoginHome extends StatelessWidget {
@@ -16,7 +17,7 @@ class LoginHome extends StatelessWidget {
   AppBar appBar(context) {
     return AppBar(
       title: Text(
-        "Welcome Our Application",
+        ApplicationStrings.instance.appTitle,
         style: Theme.of(context)
             .textTheme
             .headline4!
@@ -35,14 +36,14 @@ class LoginHome extends StatelessWidget {
             Navigator.pushNamed(context, "/loginCompany");
           },
           img_src: ImagePathEnums.CompanyImage.img,
-          text: "Company",
+          text: ApplicationStrings.instance.loginHomeCompany,
         ),
         InkwellContainer(
           onPressed: () {
             Navigator.pushNamed(context, "/loginPersonal");
           },
           img_src: ImagePathEnums.CandidateImage.img,
-          text: "Candidate",
+          text: ApplicationStrings.instance.loginHomeCandidate,
         )
       ],
     );

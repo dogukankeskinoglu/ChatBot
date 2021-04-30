@@ -22,4 +22,6 @@ extension CircularPercantageExtendions on CircularPercantageColorEnum {
         return Colors.white;
     }
   }
+
+  
 }

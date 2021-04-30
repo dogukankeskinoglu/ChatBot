@@ -1,6 +1,7 @@
 import 'package:f_chatbot/core/component/button/containerButton.dart';
 import 'package:f_chatbot/core/controller/validator.dart';
 import 'package:f_chatbot/core/exception/textform_field_exception.dart';
+import 'package:f_chatbot/core/localizate/application_string.dart';
 import 'package:f_chatbot/page/background_page/opacity_background.dart';
 import 'package:flutter/material.dart';
 
@@ -67,13 +68,13 @@ class LoginPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Hesabınız yok mu?",
+          ApplicationStrings.instance.hesapYokMu,
           style: TextStyle(color: Colors.grey, fontSize: 20),
         ),
         InkWell(
           onTap: () => Navigator.pushNamed(context, "/createAccountPersonal"),
           child: Text(
-            "Hesap oluşturun",
+            ApplicationStrings.instance.hesapOlustur,
             style: TextStyle(
                 color: Colors.blue, fontSize: 20, fontWeight: FontWeight.bold),
           ),
@@ -86,10 +87,10 @@ class LoginPage extends StatelessWidget {
     return ContainerButton(
         containerOnpressed: loginButtonFunction,
         containerColor: Colors.blue,
-        containerText: "LOGIN",
-        containerHeight: size.height / 20,
-        containerWidth: size.width,
-        containerRadius: Radius.circular(5));
+        containerText: ApplicationStrings.instance.login,
+        containerHeightRate: 0.2,
+        containerWidthRate: 1,
+        containerRadius: 5);
   }
 
   Text textWelcome() {

@@ -9,19 +9,19 @@ class CustomElevatedButton extends StatelessWidget {
       : super(key: key);
 
   @override
-  ElevatedButton build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      child: Text(text),
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0),
+  ButtonTheme build(BuildContext context) {
+    return ButtonTheme(
+      minWidth: 200,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        child: Text(text),
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
           ),
-
         ),
-        
-      
       ),
     );
   }
