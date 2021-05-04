@@ -41,11 +41,9 @@ extension CustomOrderEnumsExtension on CustomOrderEnums {
       case CustomOrderEnums.kabuledilen:
         return "Kabul edilene göre ";
       case CustomOrderEnums.basvurulmayan:
-        return "Başvurulmayan ilana göre";
+        return "BaSvurulmayan ilana göre";
       default:
         throw Exception("Bilinmeyen sıralama $this");
     }
   }
-
-  
 }

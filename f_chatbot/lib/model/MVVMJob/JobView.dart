@@ -1,11 +1,12 @@
+import 'package:f_chatbot/ProviderModel/orderDropdown.dart';
 import 'package:f_chatbot/core/component/card/job_card.dart';
 import 'package:f_chatbot/core/component/slidable/slidableWidget.dart';
 import 'package:f_chatbot/core/enum/customOrder.dart';
 import 'package:f_chatbot/core/localizate/application_string.dart';
 import 'package:f_chatbot/model/MVVMJob/JobViewModel.dart';
-import 'package:f_chatbot/model/job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
+import 'package:provider/provider.dart';
 
 class JobView extends JobViewModel {
   TextEditingController text = TextEditingController();
@@ -68,9 +69,22 @@ class JobView extends JobViewModel {
 
   Column buildBodyAllJobColumn() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(child: searchBar()),
-        Expanded(child: buildDropdownButton()),
+        Expanded(
+            flex: 1,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: Consumer<DropDownOrderModel>(
+                    builder: (context, orderObject, child) =>
+                        buildDropdownButton(orderObject),
+                  ),
+                ),
+                Expanded(child: searchBar())
+              ],
+            )),
         Expanded(
           flex: 15,
           child: buildListView(),
@@ -83,7 +97,7 @@ class JobView extends JobViewModel {
     return TextFormField(
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-          hintText: "Şirket Adı"),
+          hintText: "Sirket Adı"),
     );
   }
 
@@ -99,10 +113,42 @@ class JobView extends JobViewModel {
     );
   }
 
-  DropdownButton<String> buildDropdownButton() {
-    return DropdownButton(
-        icon: Icon(Icons.arrow_downward_sharp),
-        value: dropdownValue,
+  Widget buildDropdownButton(DropDownOrderModel model) {
+    return DropdownButtonHideUnderline(
+      child: DropdownButton(
+          value: dropdownValue,
+          icon: Icon(Icons.reorder_outlined),
+          items: <CustomOrderEnums>[
+            CustomOrderEnums.tarih_artan,
+            CustomOrderEnums.tarih_azalan,
+            CustomOrderEnums.sirket_artan,
+            CustomOrderEnums.sirket_azalan,
+            CustomOrderEnums.puan_artan,
+            CustomOrderEnums.puan_azalan,
+          ].map<DropdownMenuItem<String>>((CustomOrderEnums value) {
+            return DropdownMenuItem<String>(
+              value: value.text,
+              child: Text(value.text),
+            );
+          }).toList(),
+          onChanged: (String? newValue) {
+            print("O:$dropdownValue N:$newValue G:N");
+            if (dropdownValue != newValue) {
+              print("O:$dropdownValue N:$newValue G:E");
+              CustomOrderEnums.values.forEach((element) {
+                if (element.text == newValue) {
+                  orderByMatch(element);
+                }
+              });
+              dropdownValue = newValue!;
+              widgetOptions[0] = buildBodyAllJobColumn();
+              setState(() {});
+            }
+          }),
+    );
+
+    /*CustomDropDownItem(
+        dropdownValue: model.selectedValue,
         items: <CustomOrderEnums>[
           CustomOrderEnums.tarih_artan,
           CustomOrderEnums.tarih_azalan,
@@ -116,20 +162,8 @@ class JobView extends JobViewModel {
             child: Text(value.text),
           );
         }).toList(),
-        onChanged: (String? newValue) {
-          print("O:$dropdownValue N:$newValue G:N");
-          if (dropdownValue != newValue) {
-            print("O:$dropdownValue N:$newValue G:E");
-            CustomOrderEnums.values.forEach((element) {
-              if (element.text == newValue) {
-                orderByMatch(element);
-              }
-            });
-            dropdownValue = newValue!;
-            widgetOptions[0] = buildBodyAllJobColumn();
-            setState(() {});
-          }
-        });
+        function: model.changeValue);
+    );*/
   }
 
   ListView buildListView() {

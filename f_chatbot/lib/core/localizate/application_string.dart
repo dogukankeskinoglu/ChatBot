@@ -13,14 +13,16 @@ class ApplicationStrings {
   final String login = 'LOGIN';
   final String loginHomeCompany = UserEnum.Company.type;
   final String loginHomeCandidate = UserEnum.Candidate.type;
+  final String inputEmailHint = "Email";
+  final String inputPasswordHint = "Password";
   final String appTitle = 'Welcome Our Chatbot';
   final String hesapYokMu = "Hesabınız yok mu?";
-  final String hesapOlustur = "Hesap oluşturun";
-  final String jobPageTitle = 'Senin için bunları buldum';
-  final String jobSearchTitle = 'Şirketi giriniz';
-  final String jobAlreadyApply = "İlana önceden başvurdunuz";
+  final String hesapOlustur = "Hesap oluSturun";
+  final String jobPageTitle = 'Senin iCin bunları buldum';
+  final String jobSearchTitle = 'Sirketi giriniz';
+  final String jobAlreadyApply = "Ilana önceden baSvurdunuz";
   final String jobAlreadyNotApply =
-      "Başvurduğunuz ilanları iptal edebilirsiniz";
-  final String jobAlreadyRefuse = "Reddedildiğiniz ilana işlem yapamazsınız";
-  final String jobAlreadyAccept = "Bu iş ilanından zaten randevu aldınız";
+      "BaSvurduGunuz ilanları iptal edebilirsiniz";
+  final String jobAlreadyRefuse = "ReddedildiGiniz ilana iSlem yapamazsınız";
+  final String jobAlreadyAccept = "Bu iS ilanından zaten randevu aldınız";
 }

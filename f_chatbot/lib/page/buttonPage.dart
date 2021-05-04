@@ -29,6 +29,11 @@ class ButtonPage extends StatelessWidget {
                   Navigator.of(context).pushNamed("/loginHome");
                 },
                 text: "Login Home Page"),
+            CustomElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed("/CompanyPage");
+                },
+                text: "Company Page"),
           ],
         ),
       ),

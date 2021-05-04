@@ -11,7 +11,7 @@ class CircularPercantageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircularPercentIndicator(
-      radius: 50,
+      radius: 45,
       lineWidth: 2,
       percent: radius / 100,
       center: new Text("%${radius.toString()}"),

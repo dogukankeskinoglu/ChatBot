@@ -1,5 +1,7 @@
 import 'package:f_chatbot/core/component/button/containerButton.dart';
+import 'package:f_chatbot/core/component/textFormField/customTextField.dart';
 import 'package:f_chatbot/core/controller/validator.dart';
+import 'package:f_chatbot/core/enum/validatorEnum.dart';
 import 'package:f_chatbot/core/exception/textform_field_exception.dart';
 import 'package:f_chatbot/core/localizate/application_string.dart';
 import 'package:f_chatbot/page/background_page/opacity_background.dart';
@@ -53,13 +55,33 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 textWelcome(),
-                textFormFieldEmail(),
-                textFormFieldPassword(),
+                customTextFormFieldEmail(),
+                customTextFormFieldPassword(),
                 loginButton(size),
                 textRow(context)
               ]),
         ),
       ),
+    );
+  }
+
+  CustomTextFormField customTextFormFieldEmail() {
+    return CustomTextFormField(
+      hinttext: ApplicationStrings.instance.inputEmailHint,
+      keyboardType: TextInputType.emailAddress,
+      prefixIcon: Icon(Icons.email_outlined),
+      validator: ValidatorEnums.EmailLoginValidator,
+      textcontroller: cEmail,
+    );
+  }
+
+  CustomTextFormField customTextFormFieldPassword() {
+    return CustomTextFormField(
+      hinttext: ApplicationStrings.instance.inputPasswordHint,
+      keyboardType: TextInputType.text,
+      prefixIcon: Icon(Icons.lock),
+      validator: ValidatorEnums.PasswordLoginValidator,
+      textcontroller: cPassword,
     );
   }
 
@@ -88,9 +110,9 @@ class LoginPage extends StatelessWidget {
         containerOnpressed: loginButtonFunction,
         containerColor: Colors.blue,
         containerText: ApplicationStrings.instance.login,
-        containerHeightRate: 0.2,
+        containerHeightRate: 0.08,
         containerWidthRate: 1,
-        containerRadius: 5);
+        containerRadius: 30);
   }
 
   Text textWelcome() {
@@ -104,7 +126,7 @@ class LoginPage extends StatelessWidget {
   void loginButtonFunction() {
     if (_formKey.currentState!.validate()) {
     } else {
-      print("Lütfen düzgün formatta giriniz");
+      print("LUtfen dUzgUn formatta giriniz");
     }
   }
 
@@ -122,25 +144,6 @@ class LoginPage extends StatelessWidget {
           print(TextFormFieldException);
         } else {
           return isPasswordValid(value);
-        }
-      },
-    );
-  }
-
-  TextFormField textFormFieldEmail() {
-    return TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      controller: cEmail,
-      maxLines: 1,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-          prefixIcon: Icon(Icons.email),
-          hintText: "Email"),
-      validator: (value) {
-        if (value == null) {
-          print(TextFormFieldException);
-        } else {
-          return isValidateEmail(value);
         }
       },
     );
