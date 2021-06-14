@@ -6,19 +6,13 @@ import 'package:f_chatbot/core/component/toast/toastmessage.dart';
 import 'package:f_chatbot/core/enum/locationEnum.dart';
 import 'package:f_chatbot/core/enum/sectorEnum.dart';
 import 'package:f_chatbot/core/enum/validatorEnum.dart';
+import 'package:f_chatbot/page/company/Company_MVVM/ModelView/CompanyViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:date_time_format/date_time_format.dart';
 
-class CompanyInformationPage extends StatelessWidget {
-  TextEditingController companyName = TextEditingController();
-  TextEditingController companyDescription = TextEditingController();
-  TextEditingController companyTelephone = TextEditingController();
-  TextEditingController companyEmail = TextEditingController();
-  TextEditingController companyWebsite = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-
-  //Sektör
+class CompanyInformation extends CompanyViewModel {
+  
+  CompanyInformation(String companyName) : super(companyName);
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +118,7 @@ class CompanyInformationPage extends StatelessWidget {
             child: Center(child: Icon(Icons.date_range)),
           ),
           title: Text("Kuruluş tarihi seçmek için tıklayınız"),
-          subtitle: Text(model.selectedDate.format("d/m/Y")),
+          subtitle: Text(model.selectedDate.toString()),
         ),
       ),
     );
@@ -132,7 +126,7 @@ class CompanyInformationPage extends StatelessWidget {
 
   CustomTextFormField webSiteTextInput() {
     return CustomTextFormField(
-      textcontroller: companyWebsite,
+      textcontroller: tcCmpanyWebsite,
       hinttext: "Sirket Website",
       prefixIcon: Icon(Icons.web),
       keyboardType: TextInputType.url,
@@ -141,7 +135,7 @@ class CompanyInformationPage extends StatelessWidget {
 
   CustomTextFormField emailTextInput() {
     return CustomTextFormField(
-        textcontroller: companyEmail,
+        textcontroller: tcCompanyEmail,
         hinttext: "Sirket Email",
         prefixIcon: Icon(Icons.email_outlined),
         keyboardType: TextInputType.emailAddress,
@@ -150,7 +144,7 @@ class CompanyInformationPage extends StatelessWidget {
 
   CustomTextFormField telephoneTextInput() {
     return CustomTextFormField(
-      textcontroller: companyTelephone,
+      textcontroller: tcCompanyTelephone,
       hinttext: "Sirket Telefon",
       prefixIcon: Icon(Icons.phone),
       keyboardType: TextInputType.phone,
@@ -192,7 +186,7 @@ class CompanyInformationPage extends StatelessWidget {
 
   CustomTextFormField descriptionTextInput() {
     return CustomTextFormField(
-      textcontroller: companyDescription,
+      textcontroller: tcCompanyDescription,
       hinttext: "Sirket Bilgi",
       maxLines: 5,
       prefixIcon: Icon(Icons.description_sharp),
@@ -201,7 +195,7 @@ class CompanyInformationPage extends StatelessWidget {
 
   CustomTextFormField nameTextInput() {
     return CustomTextFormField(
-      textcontroller: companyName,
+      textcontroller: tcCompanyName,
       hinttext: "Sirket İsmi",
       prefixIcon: Icon(Icons.account_balance_outlined),
     );

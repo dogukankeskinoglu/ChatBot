@@ -4,5 +4,4 @@ enum ValidatorEnums {
   EmptyValidator,
   EmailValidator,
   PhoneValidator,
-
 }

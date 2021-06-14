@@ -1,6 +1,6 @@
 import 'package:f_chatbot/core/component/card/job_card.dart';
 import 'package:f_chatbot/core/enum/jobAction.dart';
-import 'package:f_chatbot/model/job_model.dart';
+import 'package:f_chatbot/Job/model/job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 

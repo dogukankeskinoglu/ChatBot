@@ -4,7 +4,9 @@ enum ImagePathEnums {
   CompanyImage,
   CandidateImage,
   CandidateLoginWallPaper,
-  CompanyLoginWallPaper
+  CompanyLoginWallPaper,
+  CompanyInformationImage,
+  CompanyJobImage,
 }
 
 extension ImagePathExtension on ImagePathEnums {
@@ -18,6 +20,10 @@ extension ImagePathExtension on ImagePathEnums {
         return "assets/images/employeelogin.jpg";
       case ImagePathEnums.CompanyLoginWallPaper:
         return "assets/images/companyloginpage.png";
+      case ImagePathEnums.CompanyInformationImage:
+        return "assets/images/companyInformation.png";
+      case ImagePathEnums.CompanyJobImage:
+        return "assets/images/companyJob.png";
       default:
         throw ImagePathException(this);
     }

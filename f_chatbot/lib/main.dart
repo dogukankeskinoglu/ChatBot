@@ -1,16 +1,17 @@
-
+import 'package:f_chatbot/Candidate/CandidateSignup/view/singupCandidate.dart';
+import 'package:f_chatbot/Company/CompanyLogin/view/loginCompany.dart';
+import 'package:f_chatbot/Company/CompanySignup/view/signupCompany.dart';
+import 'package:f_chatbot/Job/Job.dart';
 import 'package:f_chatbot/ProviderModel/companyCreateModel.dart';
-import 'package:f_chatbot/core/enum/imagePath.dart';
-import 'package:f_chatbot/model/MVVMJob/Job.dart';
-import 'package:f_chatbot/page/buttonPage.dart';
-import 'package:f_chatbot/page/create_account_page/create_account_personal.dart';
+import 'package:f_chatbot/ProviderModel/loginModel.dart';
+import 'package:f_chatbot/page/company/Company_MVVM/View/CompanyHome.dart';
+import 'package:f_chatbot/page/company/Company_MVVM/View/CompanyJobs.dart';
 import 'package:f_chatbot/page/error_page/unknown_route.dart';
-import 'package:f_chatbot/page/home_page/companyHome.dart';
-import 'package:f_chatbot/page/login_page/login_home.dart';
-import 'package:f_chatbot/page/login_page/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'Candidate/CandidateLogin/view/loginCandidate.dart';
+import 'Company/CompanyInformation/view/companyInformation.dart';
+import 'Home/home.dart';
 import 'ProviderModel/orderDropdown.dart';
 import 'page/create_account_page/create_account_company.dart';
 
@@ -25,23 +26,24 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => CompanyCreateModel()),
         ChangeNotifierProvider(create: (context) => DropDownOrderModel()),
+        ChangeNotifierProvider(create: (context) => LoginModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: "ChatBot",
         routes: {
-          '/': (context) => ButtonPage(),
-          '/CompanyPage': (context) => CompanyHome(
+          '/': (context) => Home(),
+          '/CompanyHome': (context) => CompanyHome(
                 companyName: 'Company',
               ),
-          '/loginHome': (context) => LoginHome(),
+          '/CompanyInformation':(context)=>CompanyInformations(),
+          '/CompanyJobs':(context)=>CompanyJobs(),
+          //'/loginHome': (context) => LoginHome(),
           '/jobPage': (context) => Job(),
-          '/loginPersonal': (context) =>
-              LoginPage(ImagePathEnums.CandidateLoginWallPaper.img, false),
-          '/loginCompany': (context) =>
-              LoginPage(ImagePathEnums.CompanyLoginWallPaper.img, true),
-          '/createAccountPersonal': (context) => CreateAccountPersonal(),
-          '/createAccountCompany': (context) => CreateAccountCompany(),
+          '/loginPersonal': (context) =>LoginCandidate(),
+          '/loginCompany': (context) =>LoginCompany(),
+          '/createAccountPersonal': (context) => SignupCandidate(),
+          '/createAccountCompany': (context) => SignupCompany(),
         },
         onUnknownRoute: (settings) => MaterialPageRoute(
           builder: (context) => ErrorPage(

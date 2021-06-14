@@ -3,10 +3,11 @@ import 'package:f_chatbot/core/component/card/job_card.dart';
 import 'package:f_chatbot/core/component/slidable/slidableWidget.dart';
 import 'package:f_chatbot/core/enum/customOrder.dart';
 import 'package:f_chatbot/core/localizate/application_string.dart';
-import 'package:f_chatbot/model/MVVMJob/JobViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
 import 'package:provider/provider.dart';
+
+import 'JobViewModel.dart';
 
 class JobView extends JobViewModel {
   TextEditingController text = TextEditingController();

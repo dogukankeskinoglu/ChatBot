@@ -1,5 +1,5 @@
-import 'package:f_chatbot/model/MVVMJob/JobView.dart';
 import 'package:flutter/material.dart';
+import 'JobView.dart';
 
 class Job extends StatefulWidget {
   @override

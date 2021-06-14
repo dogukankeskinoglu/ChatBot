@@ -3,10 +3,10 @@ import 'package:f_chatbot/core/component/toast/toastmessage.dart';
 import 'package:f_chatbot/core/enum/customOrder.dart';
 import 'package:f_chatbot/core/enum/jobAction.dart';
 import 'package:f_chatbot/core/localizate/application_string.dart';
-import 'package:f_chatbot/model/MVVMJob/Job.dart';
-
-import 'package:f_chatbot/model/job_model.dart';
+import 'package:f_chatbot/Job/model/job_model.dart';
 import 'package:flutter/material.dart';
+
+import 'Job.dart';
 
 abstract class JobViewModel extends BaseStateFull<Job> {
   String dropdownValue = CustomOrderEnums.puan_artan.text;

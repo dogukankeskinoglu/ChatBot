@@ -1,4 +1,4 @@
-import 'package:f_chatbot/model/job_model.dart';
+import 'package:f_chatbot/Job/model/job_model.dart';
 
 enum CustomOrderEnums {
   tarih_azalan,

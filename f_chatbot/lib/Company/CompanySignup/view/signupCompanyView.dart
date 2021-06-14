@@ -1,29 +1,29 @@
+import 'package:f_chatbot/Company/CompanyHome/companyHome.dart';
+import 'package:f_chatbot/Company/CompanySignup/modelview/signupCompanyViewModel.dart';
 import 'package:f_chatbot/core/component/button/containerButton.dart';
 import 'package:f_chatbot/core/component/textFormField/customTextField.dart';
-import 'package:f_chatbot/core/controller/validator.dart';
+import 'package:f_chatbot/core/enum/imagePath.dart';
+import 'package:f_chatbot/core/enum/loginEnum.dart';
 import 'package:f_chatbot/core/enum/validatorEnum.dart';
-import 'package:f_chatbot/core/exception/textform_field_exception.dart';
 import 'package:f_chatbot/core/localizate/application_string.dart';
 import 'package:f_chatbot/page/background_page/opacity_background.dart';
+import 'package:f_chatbot/page/load_page/loadPage.dart';
 import 'package:flutter/material.dart';
 
-late var size;
-
-class LoginPage extends StatelessWidget {
-  final String img_src;
-  final bool isCompany;
-  final TextEditingController cEmail = TextEditingController();
-  final TextEditingController cPassword = TextEditingController();
-
-  final _formKey = GlobalKey<FormState>();
-  LoginPage(this.img_src, this.isCompany);
+class SignupCompanyView extends SignupCompanyViewModel{
+  @override
+    void initState() {
+      super.initState();
+      signUp = UnauthenticatedEnum.FAIL;
+    }
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery.of(context).size;
+    var size = MediaQuery.of(context).size;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: mainStack(size, context),
-    );
+        resizeToAvoidBottomInset: false,
+        body: signUp == UnauthenticatedEnum.FAIL
+            ? mainStack(size, context)
+            : LoadPage(page: CompanyHome(companyName:tcCompanyName.text,)));
   }
 
   Stack mainStack(Size size, BuildContext context) {
@@ -37,7 +37,8 @@ class LoginPage extends StatelessWidget {
 
   OpacityBackGround pageImage() {
     return OpacityBackGround(
-      imgsrc: img_src,
+      imgsrc: ImagePathEnums.CompanyLoginWallPaper.img,
+      heightPercent: 0.2,
       opacity: 1,
     );
   }
@@ -46,24 +47,45 @@ class LoginPage extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Form(
-        key: _formKey,
+        key: formKey,
         child: Container(
-          height: size.height / 2,
+          height: size.height*0.8,
           width: size.width,
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.symmetric(horizontal: 8),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 textWelcome(),
+                customTextFormFieldName(),
+                customTextFormFieldUsername(),
                 customTextFormFieldEmail(),
                 customTextFormFieldPassword(),
-                loginButton(size),
-                textRow(context)
+                singUpButton(size),
+                textRow(context),
               ]),
         ),
       ),
     );
   }
+
+  CustomTextFormField customTextFormFieldName(){
+      return CustomTextFormField(
+      hinttext: ApplicationStrings.instance.inputCompanyNameHint,
+      prefixIcon: Icon(Icons.account_circle),
+      validator: ValidatorEnums.EmptyValidator,
+      textcontroller: tcCompanyName,
+    );
+  }
+
+  CustomTextFormField customTextFormFieldUsername(){
+      return CustomTextFormField(
+      hinttext: ApplicationStrings.instance.inputUsernameHint,
+      prefixIcon: Icon(Icons.insert_drive_file),
+      validator: ValidatorEnums.EmptyValidator,
+      textcontroller: tcCompanyUsername,
+    );
+  }
+
 
   CustomTextFormField customTextFormFieldEmail() {
     return CustomTextFormField(
@@ -71,9 +93,10 @@ class LoginPage extends StatelessWidget {
       keyboardType: TextInputType.emailAddress,
       prefixIcon: Icon(Icons.email_outlined),
       validator: ValidatorEnums.EmailLoginValidator,
-      textcontroller: cEmail,
+      textcontroller: tcCompanyEmail,
     );
   }
+
 
   CustomTextFormField customTextFormFieldPassword() {
     return CustomTextFormField(
@@ -81,7 +104,7 @@ class LoginPage extends StatelessWidget {
       keyboardType: TextInputType.text,
       prefixIcon: Icon(Icons.lock),
       validator: ValidatorEnums.PasswordLoginValidator,
-      textcontroller: cPassword,
+      textcontroller: tcCompanyPassword,
     );
   }
 
@@ -90,13 +113,13 @@ class LoginPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          ApplicationStrings.instance.hesapYokMu,
+          ApplicationStrings.instance.hesapVarMi,
           style: TextStyle(color: Colors.grey, fontSize: 20),
         ),
         InkWell(
-          onTap: () => Navigator.pushNamed(context, "/createAccountPersonal"),
+          onTap: () => Navigator.pushNamed(context, "/loginCompany"),
           child: Text(
-            ApplicationStrings.instance.hesapOlustur,
+            ApplicationStrings.instance.hesapGiris,
             style: TextStyle(
                 color: Colors.blue, fontSize: 20, fontWeight: FontWeight.bold),
           ),
@@ -105,11 +128,11 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  ContainerButton loginButton(Size size) {
+  ContainerButton singUpButton(Size size) {
     return ContainerButton(
-        containerOnpressed: loginButtonFunction,
+        containerOnpressed: signup,
         containerColor: Colors.blue,
-        containerText: ApplicationStrings.instance.login,
+        containerText: ApplicationStrings.instance.signup,
         containerHeightRate: 0.08,
         containerWidthRate: 1,
         containerRadius: 30);
@@ -117,35 +140,11 @@ class LoginPage extends StatelessWidget {
 
   Text textWelcome() {
     return Text(
-      "Welcome to Login Page",
+      "Welcome to Signup Page",
       style: TextStyle(
           fontSize: 30, fontWeight: FontWeight.bold, color: Colors.blue),
     );
   }
 
-  void loginButtonFunction() {
-    if (_formKey.currentState!.validate()) {
-    } else {
-      print("LUtfen dUzgUn formatta giriniz");
-    }
-  }
-
-  TextFormField textFormFieldPassword() {
-    return TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      controller: cPassword,
-      maxLines: 1,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-          prefixIcon: Icon(Icons.lock),
-          hintText: "Password"),
-      validator: (value) {
-        if (value == null) {
-          print(TextFormFieldException);
-        } else {
-          return isPasswordValid(value);
-        }
-      },
-    );
-  }
+  
 }

@@ -11,18 +11,28 @@ class ApplicationStrings {
   ApplicationStrings._init();
 
   final String login = 'LOGIN';
+  final String signup = "SIGNUP";
   final String loginHomeCompany = UserEnum.Company.type;
   final String loginHomeCandidate = UserEnum.Candidate.type;
+  final String inputNameHint = "Name";
+  final String inputCompanyNameHint = "Company Name";
+  final String inputSurnameHint = "Surname";
+  final String inputUsernameHint = "Username";
   final String inputEmailHint = "Email";
+  final String inputCompanyHint = "Company";
   final String inputPasswordHint = "Password";
   final String appTitle = 'Welcome Our Chatbot';
   final String hesapYokMu = "Hesabınız yok mu?";
-  final String hesapOlustur = "Hesap oluSturun";
-  final String jobPageTitle = 'Senin iCin bunları buldum';
+  final String hesapVarMi = "Hesabınız var mı?";
+  final String hesapGiris = "Giriş yapın";
+  final String hesapOlustur = "Hesap oluşturun";
+  final String jobPageTitle = 'Senin için bunları buldum';
   final String jobSearchTitle = 'Sirketi giriniz';
-  final String jobAlreadyApply = "Ilana önceden baSvurdunuz";
+  final String jobAlreadyApply = "Ilana önceden başvurdunuz";
   final String jobAlreadyNotApply =
-      "BaSvurduGunuz ilanları iptal edebilirsiniz";
-  final String jobAlreadyRefuse = "ReddedildiGiniz ilana iSlem yapamazsınız";
-  final String jobAlreadyAccept = "Bu iS ilanından zaten randevu aldınız";
+      "BaşvurduGunuz ilanları iptal edebilirsiniz";
+  final String jobAlreadyRefuse = "Reddedildiğiniz ilana işlem yapamazsınız";
+  final String jobAlreadyAccept = "Bu iş ilanından zaten randevu aldınız";
+  final String companyInformation = "Set Company Information";
+  final String companyJob = "Show Job";
 }

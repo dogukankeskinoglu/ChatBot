@@ -1,3 +1,4 @@
+import 'package:f_chatbot/core/controller/validator.dart';
 import 'package:f_chatbot/core/enum/validatorEnum.dart';
 import 'package:f_chatbot/core/exception/textform_field_exception.dart';
 import 'package:f_chatbot/core/exception/validator_exception.dart';
@@ -27,6 +28,7 @@ class CustomTextFormField extends StatelessWidget {
       controller: textcontroller,
       maxLines: maxLines,
       decoration: InputDecoration(
+          labelText: hinttext,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
           prefixIcon: prefixIcon,
           hintText: hinttext),
@@ -37,20 +39,16 @@ class CustomTextFormField extends StatelessWidget {
           switch (validator) {
             case ValidatorEnums.EmailLoginValidator:
               print("emailpassword");
-              print(value);
-              break;
+              return isValidateEmail(textcontroller.text);
             case ValidatorEnums.PasswordLoginValidator:
               print("loginpassword");
-              break;
+              return isPasswordValid(textcontroller.text);
             case ValidatorEnums.EmptyValidator:
-              print("control is empty");
-              break;
+              return isEmptyValue(textcontroller.text);
             case ValidatorEnums.EmailValidator:
-              print("LUtfen geCerli mail giriniz");
-              break;
+              return isValidateEmail(textcontroller.text);
             case ValidatorEnums.PhoneValidator:
-              print("LUtfen geCerli telefon no giriniz");
-              break;
+              return isValidPhone(textcontroller.text);
             default:
               ValidatorException(validator);
           }

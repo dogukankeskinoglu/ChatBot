@@ -3,7 +3,10 @@ import 'package:f_chatbot/core/enum/imagePath.dart';
 import 'package:f_chatbot/core/localizate/application_string.dart';
 import 'package:flutter/material.dart';
 
-class LoginHome extends StatelessWidget {
+class CompanyHome extends StatelessWidget {
+  final String companyName;
+
+  const CompanyHome({Key? key, required this.companyName}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +20,7 @@ class LoginHome extends StatelessWidget {
   AppBar appBar(context) {
     return AppBar(
       title: Text(
-        ApplicationStrings.instance.appTitle,
+        companyName,
         style: Theme.of(context)
             .textTheme
             .headline4!
@@ -33,17 +36,17 @@ class LoginHome extends StatelessWidget {
       children: [
         InkwellContainer(
           onPressed: () {
-            Navigator.pushNamed(context, "/loginCompany");
+            Navigator.pushNamed(context, "/CompanyInformation");
           },
-          img_src: ImagePathEnums.CompanyImage.img,
-          text: ApplicationStrings.instance.loginHomeCompany,
+          img_src: ImagePathEnums.CompanyInformationImage.img,
+          text: ApplicationStrings.instance.companyInformation,
         ),
         InkwellContainer(
           onPressed: () {
-            Navigator.pushNamed(context, "/loginPersonal");
+            Navigator.pushNamed(context, "/CompanyJobs");
           },
-          img_src: ImagePathEnums.CandidateImage.img,
-          text: ApplicationStrings.instance.loginHomeCandidate,
+          img_src: ImagePathEnums.CompanyJobImage.img,
+          text: ApplicationStrings.instance.companyJob,
         )
       ],
     );
