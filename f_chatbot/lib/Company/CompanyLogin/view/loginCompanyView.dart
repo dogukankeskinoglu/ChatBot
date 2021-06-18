@@ -1,35 +1,37 @@
+import 'package:f_chatbot/Company/CompanyHome/companyHome.dart';
 import 'package:f_chatbot/Company/CompanyLogin/modelview/loginCompanyViewModel.dart';
 import 'package:f_chatbot/core/component/button/containerButton.dart';
 import 'package:f_chatbot/core/component/textFormField/customTextField.dart';
-import 'package:f_chatbot/core/controller/validator.dart';
 import 'package:f_chatbot/core/enum/imagePath.dart';
 import 'package:f_chatbot/core/enum/loginEnum.dart';
 import 'package:f_chatbot/core/enum/validatorEnum.dart';
-import 'package:f_chatbot/core/exception/textform_field_exception.dart';
 import 'package:f_chatbot/core/localizate/application_string.dart';
 import 'package:f_chatbot/page/background_page/opacity_background.dart';
-import 'package:f_chatbot/page/company/Company_MVVM/View/CompanyHome.dart';
 import 'package:f_chatbot/page/load_page/loadPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class LoginCompanyView extends LoginCompanyViewModel{
-
+class LoginCompanyView extends LoginCompanyViewModel {
+  late final snackBar;
   @override
-    void initState() {
-      super.initState();
-      cCompanyName = TextEditingController();
-      cPassword = TextEditingController();
-      isLogin = UnauthenticatedEnum.FAIL;
-    }
+  void initState() {
+    super.initState();
+    cCompanyName = TextEditingController();
+    cPassword = TextEditingController();
+    isLogin = UnauthenticatedEnum.FAIL;
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        body: isLogin == UnauthenticatedEnum.FAIL
-            ? mainStack(size, context)
-            : LoadPage(page: CompanyHome(companyName: cCompanyName.text,)));
+        body: isLogin == UnauthenticatedEnum.SUCCESSFULL
+            ? LoadPage(
+                page: CompanyHome(
+                companyName: cCompanyName.text,
+              ))
+            : mainStack(size, context));
   }
 
   Stack mainStack(Size size, BuildContext context) {
@@ -73,6 +75,7 @@ class LoginCompanyView extends LoginCompanyViewModel{
 
   CustomTextFormField customTextFormFieldEmail() {
     return CustomTextFormField(
+      padding: EdgeInsets.all(0),
       hinttext: ApplicationStrings.instance.inputCompanyHint,
       prefixIcon: Icon(Icons.business),
       validator: ValidatorEnums.EmptyValidator,
@@ -83,9 +86,11 @@ class LoginCompanyView extends LoginCompanyViewModel{
   CustomTextFormField customTextFormFieldPassword() {
     return CustomTextFormField(
       hinttext: ApplicationStrings.instance.inputPasswordHint,
+      padding: EdgeInsets.all(0),
       keyboardType: TextInputType.text,
+      obscure: true,
       prefixIcon: Icon(Icons.lock),
-      validator: ValidatorEnums.PasswordLoginValidator,
+      validator: ValidatorEnums.EmptyValidator,
       textcontroller: cPassword,
     );
   }
@@ -120,32 +125,12 @@ class LoginCompanyView extends LoginCompanyViewModel{
         containerRadius: 30);
   }
 
+
   Text textWelcome() {
     return Text(
-      "Welcome to Login Page",
+      "İş Veren Giriş Sayfası",
       style: TextStyle(
           fontSize: 30, fontWeight: FontWeight.bold, color: Colors.blue),
     );
   }
-
-
-  TextFormField textFormFieldPassword() {
-    return TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      controller: cPassword,
-      maxLines: 1,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-          prefixIcon: Icon(Icons.lock),
-          hintText: "Password"),
-      validator: (value) {
-        if (value == null) {
-          print(TextFormFieldException);
-        } else {
-          return isPasswordValid(value);
-        }
-      },
-    );
-  }
-  
 }

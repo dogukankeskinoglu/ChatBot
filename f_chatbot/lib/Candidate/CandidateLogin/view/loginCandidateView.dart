@@ -1,5 +1,5 @@
+import 'package:f_chatbot/Candidate/CandidateJob/view/candidateJob.dart';
 import 'package:f_chatbot/Candidate/CandidateLogin/modelview/loginViewModel.dart';
-import 'package:f_chatbot/Job/Job.dart';
 import 'package:f_chatbot/core/component/button/containerButton.dart';
 import 'package:f_chatbot/core/component/textFormField/customTextField.dart';
 import 'package:f_chatbot/core/enum/imagePath.dart';
@@ -27,7 +27,7 @@ class LoginCandidateView extends LoginCandidateViewModel{
         resizeToAvoidBottomInset: false,
         body: isLogin == UnauthenticatedEnum.FAIL
             ? mainStack(size, context)
-            : LoadPage(page: Job()));
+            : LoadPage(page: CandidateJob()));
   }
 
   Stack mainStack(Size size, BuildContext context) {
@@ -71,6 +71,7 @@ class LoginCandidateView extends LoginCandidateViewModel{
 
   CustomTextFormField customTextFormFieldEmail() {
     return CustomTextFormField(
+      padding: EdgeInsets.all(0),
       hinttext: ApplicationStrings.instance.inputEmailHint,
       keyboardType: TextInputType.emailAddress,
       prefixIcon: Icon(Icons.email_outlined),
@@ -81,8 +82,10 @@ class LoginCandidateView extends LoginCandidateViewModel{
 
   CustomTextFormField customTextFormFieldPassword() {
     return CustomTextFormField(
+      padding: EdgeInsets.all(0),
       hinttext: ApplicationStrings.instance.inputPasswordHint,
       keyboardType: TextInputType.text,
+      obscure: true,
       prefixIcon: Icon(Icons.lock),
       validator: ValidatorEnums.PasswordLoginValidator,
       textcontroller: cPassword,
@@ -121,7 +124,7 @@ class LoginCandidateView extends LoginCandidateViewModel{
 
   Text textWelcome() {
     return Text(
-      "Welcome to Login Page",
+      "İş Arayan Giriş Sayfası",
       style: TextStyle(
           fontSize: 30, fontWeight: FontWeight.bold, color: Colors.blue),
     );

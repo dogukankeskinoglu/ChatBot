@@ -1,19 +1,19 @@
+import 'package:f_chatbot/Candidate/CandidateJob/view/candidateJob.dart';
 import 'package:f_chatbot/Candidate/CandidateSignup/view/singupCandidate.dart';
+import 'package:f_chatbot/Company/CompanyHome/companyHome.dart';
+import 'package:f_chatbot/Company/CompanyJob/ListJob/view/CompanyJobState.dart';
 import 'package:f_chatbot/Company/CompanyLogin/view/loginCompany.dart';
 import 'package:f_chatbot/Company/CompanySignup/view/signupCompany.dart';
-import 'package:f_chatbot/Job/Job.dart';
 import 'package:f_chatbot/ProviderModel/companyCreateModel.dart';
 import 'package:f_chatbot/ProviderModel/loginModel.dart';
-import 'package:f_chatbot/page/company/Company_MVVM/View/CompanyHome.dart';
-import 'package:f_chatbot/page/company/Company_MVVM/View/CompanyJobs.dart';
 import 'package:f_chatbot/page/error_page/unknown_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'Candidate/CandidateLogin/view/loginCandidate.dart';
 import 'Company/CompanyInformation/view/companyInformation.dart';
+import 'Company/CompanyJob/CreateJob/view/CompanyCreateJob.dart';
 import 'Home/home.dart';
 import 'ProviderModel/orderDropdown.dart';
-import 'page/create_account_page/create_account_company.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,9 +37,10 @@ class MyApp extends StatelessWidget {
                 companyName: 'Company',
               ),
           '/CompanyInformation':(context)=>CompanyInformations(),
-          '/CompanyJobs':(context)=>CompanyJobs(),
+          '/CompanyJobs':(context)=>CompanyJobState(),
+          '/CreateJob':(context)=>CompanyCreateJob(),
           //'/loginHome': (context) => LoginHome(),
-          '/jobPage': (context) => Job(),
+          '/jobPage': (context) => CandidateJob(),
           '/loginPersonal': (context) =>LoginCandidate(),
           '/loginCompany': (context) =>LoginCompany(),
           '/createAccountPersonal': (context) => SignupCandidate(),

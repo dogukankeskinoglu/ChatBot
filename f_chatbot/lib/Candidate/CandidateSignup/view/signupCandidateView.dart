@@ -1,5 +1,5 @@
+import 'package:f_chatbot/Candidate/CandidateJob/view/candidateJob.dart';
 import 'package:f_chatbot/Candidate/CandidateSignup/modelview/signupViewModel.dart';
-import 'package:f_chatbot/Job/Job.dart';
 import 'package:f_chatbot/core/component/button/containerButton.dart';
 import 'package:f_chatbot/core/component/textFormField/customTextField.dart';
 import 'package:f_chatbot/core/enum/imagePath.dart';
@@ -24,7 +24,7 @@ class SignupCandidateView extends SignupCandidateViewModel{
         resizeToAvoidBottomInset: false,
         body: isSignup == UnauthenticatedEnum.FAIL
             ? mainStack(size, context)
-            : LoadPage(page: Job()));
+            : LoadPage(page: CandidateJob()));
   }
 
   Stack mainStack(Size size, BuildContext context) {
@@ -57,8 +57,7 @@ class SignupCandidateView extends SignupCandidateViewModel{
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 textWelcome(),
-                customTextFormFieldName(),
-                customTextFormFieldSurname(),
+                customTextFormFieldNameSurname(),
                 customTextFormFieldUsername(),
                 customTextFormFieldEmail(),
                 customTextFormFieldPassword(),
@@ -70,27 +69,20 @@ class SignupCandidateView extends SignupCandidateViewModel{
     );
   }
 
-  CustomTextFormField customTextFormFieldName(){
+  CustomTextFormField customTextFormFieldNameSurname(){
       return CustomTextFormField(
-      hinttext: ApplicationStrings.instance.inputNameHint,
+      hinttext: ApplicationStrings.instance.inputNameSurnameHint,
+      padding: EdgeInsets.symmetric(vertical: 0),
       prefixIcon: Icon(Icons.account_circle),
       validator: ValidatorEnums.EmptyValidator,
       textcontroller: cName,
     );
   }
 
-  CustomTextFormField customTextFormFieldSurname(){
-      return CustomTextFormField(
-      hinttext: ApplicationStrings.instance.inputSurnameHint,
-      prefixIcon: Icon(Icons.account_circle),
-      validator: ValidatorEnums.EmptyValidator,
-      textcontroller: cSurname,
-    );
-  }
-
   CustomTextFormField customTextFormFieldUsername(){
       return CustomTextFormField(
       hinttext: ApplicationStrings.instance.inputUsernameHint,
+      padding: EdgeInsets.symmetric(vertical: 0),
       prefixIcon: Icon(Icons.insert_drive_file),
       validator: ValidatorEnums.EmptyValidator,
       textcontroller: cUsername,
@@ -102,6 +94,7 @@ class SignupCandidateView extends SignupCandidateViewModel{
     return CustomTextFormField(
       hinttext: ApplicationStrings.instance.inputEmailHint,
       keyboardType: TextInputType.emailAddress,
+      padding: EdgeInsets.symmetric(vertical: 0),
       prefixIcon: Icon(Icons.email_outlined),
       validator: ValidatorEnums.EmailLoginValidator,
       textcontroller: cEmail,
@@ -113,7 +106,9 @@ class SignupCandidateView extends SignupCandidateViewModel{
     return CustomTextFormField(
       hinttext: ApplicationStrings.instance.inputPasswordHint,
       keyboardType: TextInputType.text,
+      padding: EdgeInsets.symmetric(vertical: 0),
       prefixIcon: Icon(Icons.lock),
+      obscure: true,
       validator: ValidatorEnums.PasswordLoginValidator,
       textcontroller: cPassword,
     );
@@ -151,7 +146,7 @@ class SignupCandidateView extends SignupCandidateViewModel{
 
   Text textWelcome() {
     return Text(
-      "Welcome to Signup Page",
+      "İş Arayan Üye Sayfası",
       style: TextStyle(
           fontSize: 30, fontWeight: FontWeight.bold, color: Colors.blue),
     );

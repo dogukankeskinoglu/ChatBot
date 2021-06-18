@@ -1,21 +1,27 @@
+import 'package:f_chatbot/Company/CompanyHome/companyHome.dart';
 import 'package:f_chatbot/Company/CompanyInformation/modelview/companyInformationViewModel.dart';
 import 'package:f_chatbot/ProviderModel/companyCreateModel.dart';
-import 'package:f_chatbot/core/component/button/elevatedButton.dart';
+import 'package:f_chatbot/core/component/button/containerButton.dart';
 import 'package:f_chatbot/core/component/dropdown/customdropdown.dart';
 import 'package:f_chatbot/core/component/textFormField/customTextField.dart';
-import 'package:f_chatbot/core/component/toast/toastmessage.dart';
 import 'package:f_chatbot/core/enum/locationEnum.dart';
+import 'package:f_chatbot/core/enum/loginEnum.dart';
 import 'package:f_chatbot/core/enum/sectorEnum.dart';
 import 'package:f_chatbot/core/enum/validatorEnum.dart';
+import 'package:f_chatbot/core/localizate/application_string.dart';
+import 'package:f_chatbot/page/load_page/loadPage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CompanyInformationView extends CompanyInformationViewModel {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return informationState==UnauthenticatedEnum.FAIL ?
+    Scaffold(
       appBar: buildAppBar(),
-      body: buildPadding(),
+      body:  buildPadding()     
+    ): Scaffold(
+       body:LoadPage(page: CompanyHome(companyName: 'Company',))
     );
   }
 
@@ -29,20 +35,21 @@ class CompanyInformationView extends CompanyInformationViewModel {
   Column buildColumnButtonForm() {
     return Column(
       children: [
-        Expanded(flex: 18, child: SingleChildScrollView(child: buildForm())),
-        Expanded(flex: 2, child: buildSaveButton()),
+        Expanded(flex: 20, child: SingleChildScrollView(child: buildForm())),
+        Expanded(flex: 2, child: saveInformationButton()),
       ],
     );
   }
 
-  CustomElevatedButton buildSaveButton() {
-    return CustomElevatedButton(
-        onPressed: () {
-          if (formKey.currentState!.validate()) {
-            saveButton();
-          }
-        },
-        text: "Save Information");
+  ContainerButton saveInformationButton() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    return ContainerButton(
+        containerOnpressed: saveButton,
+        containerColor: Colors.blue,
+        containerText: ApplicationStrings.instance.saveInformation,
+        containerHeightRate: 0.08,
+        containerWidthRate: 1,
+        containerRadius: 30);
   }
 
   Form buildForm() {
@@ -62,8 +69,8 @@ class CompanyInformationView extends CompanyInformationViewModel {
         emailTextInput(),
         webSiteTextInput(),
         buildConsumerCityDropDown(),
+        buildConsumerSectorDropDown(),
         buildConsumerDate(),
-        buildConsumerSectorDropDown()
       ],
     );
   }

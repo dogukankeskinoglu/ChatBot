@@ -35,14 +35,14 @@ class Home extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, "/loginCompany");
           },
-          img_src: ImagePathEnums.CompanyImage.img,
+          imgSrc: ImagePathEnums.CompanyImage.img,
           text: ApplicationStrings.instance.loginHomeCompany,
         ),
         InkwellContainer(
           onPressed: () {
             Navigator.pushNamed(context, "/loginPersonal");
           },
-          img_src: ImagePathEnums.CandidateImage.img,
+          imgSrc: ImagePathEnums.CandidateImage.img,
           text: ApplicationStrings.instance.loginHomeCandidate,
         )
       ],

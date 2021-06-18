@@ -19,7 +19,7 @@ class _LoadPageState extends State<LoadPage> {
   }
 
   Future<void> waitForTime() async {
-    await Future.delayed(DurationEnums.NORMAL.time);
+    await Future.delayed(DurationEnums.LOW.time);
     setState(() {
       isLoading = true;
     });

@@ -1,4 +1,4 @@
-enum UnauthenticatedEnum { SUCCESSFULL, FAIL }
+enum UnauthenticatedEnum { SUCCESSFULL, INVALID, FAIL }
 
 extension LoginEnumState on UnauthenticatedEnum {
   bool get state {
@@ -6,6 +6,8 @@ extension LoginEnumState on UnauthenticatedEnum {
       case UnauthenticatedEnum.SUCCESSFULL:
         return true;
       case UnauthenticatedEnum.FAIL:
+        return false;
+      case UnauthenticatedEnum.INVALID:
         return false;
       default:
         throw ("Hata Login Enum $this");

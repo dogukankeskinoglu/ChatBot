@@ -1,18 +1,18 @@
+
+import 'package:f_chatbot/Candidate/CandidateJob/model/candidateJobModel.dart';
+import 'package:f_chatbot/Candidate/CandidateJob/view/candidateJob.dart';
 import 'package:f_chatbot/core/base/base_statefull.dart';
 import 'package:f_chatbot/core/component/toast/toastmessage.dart';
 import 'package:f_chatbot/core/enum/customOrder.dart';
 import 'package:f_chatbot/core/enum/jobAction.dart';
 import 'package:f_chatbot/core/localizate/application_string.dart';
-import 'package:f_chatbot/Job/model/job_model.dart';
 import 'package:flutter/material.dart';
 
-import 'Job.dart';
-
-abstract class JobViewModel extends BaseStateFull<Job> {
+abstract class CandidateJobViewModel extends BaseStateFull<CandidateJob>{
   String dropdownValue = CustomOrderEnums.puan_artan.text;
   DateTime today = new DateTime.now();
-  late List<JobModel> jobList;
-  late List<JobModel> jobListApply = [];
+  late List<CandidateJobModel> jobList;
+  late List<CandidateJobModel> jobListApply = [];
   List<int> selectedCardIndexList = [];
   List<Widget> widgetOptions = [];
   int selectedIndex = 0;
@@ -20,83 +20,70 @@ abstract class JobViewModel extends BaseStateFull<Job> {
   void initState() {
     super.initState();
     jobList = [
-      JobModel(
+      CandidateJobModel(
           "Machine Learning-Part Time",
           "DataBoss Security& Analytics A.S",
           "Ankara Turkey",
           today.subtract(new Duration(days: 4)),
-          99,
-          JobActionEnum.not_apply),
-      JobModel(
+          97,
+          JobActionEnum.accept),
+      CandidateJobModel(
         "Data Intern",
         "Scoutium",
         "Istanbul Turkey",
         today.subtract(new Duration(days: 3)),
+        90,
+        JobActionEnum.not_apply,
+      ),
+      CandidateJobModel(
+        "TR-Specialist",
+        "Apple",
+        "Istanbul Turkey",
+        today.subtract(new Duration(days: 10)),
+        50,
+        JobActionEnum.not_apply,
+      ),
+      CandidateJobModel(
+        "Yazılım Uzmanı",
+        "HUGO, BOSS",
+        "Izmir Turkey",
+        today.subtract(new Duration(days: 30)),
+        70,
+        JobActionEnum.not_apply,
+      ),
+      CandidateJobModel(
+        "Veri Bilimi ve AnalitiGi Uzmanı",
+        "Vestel",
+        "Istanbul Turkey",
+        today.subtract(new Duration(days: 65)),
         80,
-        JobActionEnum.not_apply,
+        JobActionEnum.apply,
       ),
-      JobModel(
+      CandidateJobModel(
+          "Deep Learning-Part Time",
+          "DataBoss Security& Analytics A.S",
+          "İstanbul Turkey",
+          today.subtract(new Duration(days: 60)),
+          70,
+          JobActionEnum.apply),
+      CandidateJobModel(
         "TR-Specialist",
         "Apple",
         "Istanbul Turkey",
         today.subtract(new Duration(days: 10)),
-        99,
-        JobActionEnum.not_apply,
+        20,
+        JobActionEnum.refuse,
       ),
-      JobModel(
+      CandidateJobModel(
         "Yazılım Uzmanı",
         "HUGO, BOSS",
         "Izmir Turkey",
         today.subtract(new Duration(days: 30)),
-        55,
-        JobActionEnum.not_apply,
-      ),
-      JobModel(
-        "Veri Bilimi ve AnalitiGi Uzmanı",
-        "Vestel",
-        "Istanbul Turkey",
-        today.subtract(new Duration(days: 65)),
-        65,
+        45,
         JobActionEnum.refuse,
       ),
-      JobModel(
-          "Machine Learning-Part Time",
-          "DataBoss Security& Analytics A.S",
-          "Ankara Turkey",
-          today.subtract(new Duration(days: 60)),
-          10,
-          JobActionEnum.accept),
-      JobModel(
-        "TR-Specialist",
-        "Apple",
-        "Istanbul Turkey",
-        today.subtract(new Duration(days: 10)),
-        99,
-        JobActionEnum.not_apply,
-      ),
-      JobModel(
-        "Yazılım Uzmanı",
-        "HUGO, BOSS",
-        "Izmir Turkey",
-        today.subtract(new Duration(days: 30)),
-        55,
-        JobActionEnum.refuse,
-      ),
-      JobModel(
-        "Veri Bilimi ve AnalitiGi Uzmanı",
-        "Vestel",
-        "Istanbul Turkey",
-        today.subtract(new Duration(days: 65)),
-        65,
-        JobActionEnum.not_apply,
-      ),
-      JobModel(
-          "Machine Learning-Part Time",
-          "DataBoss Security& Analytics A.S",
-          "Ankara Turkey",
-          today.subtract(new Duration(days: 60)),
-          10,
-          JobActionEnum.not_apply),
+      CandidateJobModel("Big Data", "DataBoss Security& Analytics A.S", "Ankara Turkey",
+          today.subtract(new Duration(days: 60)), 65, JobActionEnum.not_apply),
     ];
     orderByMatch(CustomOrderEnums.puan_azalan);
   }
@@ -134,7 +121,7 @@ abstract class JobViewModel extends BaseStateFull<Job> {
   }
 
   dismissSlidableItem(
-      BuildContext context, JobModel item, JobActionEnum action) {
+      BuildContext context, CandidateJobModel item, JobActionEnum action) {
     switch (action) {
       case JobActionEnum.apply:
         if (item.jobSituation == JobActionEnum.apply) {

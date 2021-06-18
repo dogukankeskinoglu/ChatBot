@@ -30,24 +30,34 @@ class CompanyHome extends StatelessWidget {
     );
   }
 
-  Row containerRow(BuildContext context) {
-    return Row(
+  Column containerRow(BuildContext context) {
+    return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         InkwellContainer(
+          heightPercent: 0.2,
           onPressed: () {
             Navigator.pushNamed(context, "/CompanyInformation");
           },
-          img_src: ImagePathEnums.CompanyInformationImage.img,
+          imgSrc: ImagePathEnums.CompanyInformationImage.img,
           text: ApplicationStrings.instance.companyInformation,
         ),
         InkwellContainer(
+          heightPercent: 0.2,
           onPressed: () {
             Navigator.pushNamed(context, "/CompanyJobs");
           },
-          img_src: ImagePathEnums.CompanyJobImage.img,
+          imgSrc: ImagePathEnums.CompanyJobImage.img,
           text: ApplicationStrings.instance.companyJob,
-        )
+        ),
+        InkwellContainer(
+          heightPercent: 0.2,
+          onPressed: () {
+            Navigator.pushNamed(context, "/CreateJob");
+          },
+          imgSrc: ImagePathEnums.CreateJobImage.img,
+          text: ApplicationStrings.instance.createJob,
+        ),
       ],
     );
   }

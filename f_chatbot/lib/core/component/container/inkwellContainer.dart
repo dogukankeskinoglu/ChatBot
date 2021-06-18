@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 
 class InkwellContainer extends StatelessWidget {
   final VoidCallback onPressed;
-  final String img_src;
+  final String imgSrc;
   final String text;
+  final double heightPercent;
+  final double widthPercent;
 
   const InkwellContainer({
     Key? key,
     required this.onPressed,
-    required this.img_src,
-    required this.text,
+    required this.imgSrc,
+    required this.text, 
+    this.heightPercent=0.5, 
+    this.widthPercent=0.3,
+
   }) : super(key: key);
 
   @override
@@ -17,13 +22,13 @@ class InkwellContainer extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        height: MediaQuery.of(context).size.height / 2,
-        width: MediaQuery.of(context).size.width / 3,
+        height: MediaQuery.of(context).size.height*heightPercent,
+        width: MediaQuery.of(context).size.width*widthPercent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              img_src,
+              imgSrc,
               fit: BoxFit.cover,
             ),
             Text(text)

@@ -1,3 +1,5 @@
+
+import 'package:f_chatbot/Candidate/CandidateJob/modelview/candidateJobViewModel.dart';
 import 'package:f_chatbot/ProviderModel/orderDropdown.dart';
 import 'package:f_chatbot/core/component/card/job_card.dart';
 import 'package:f_chatbot/core/component/slidable/slidableWidget.dart';
@@ -7,9 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
 import 'package:provider/provider.dart';
 
-import 'JobViewModel.dart';
-
-class JobView extends JobViewModel {
+class CandidateJobView extends CandidateJobViewModel {
   TextEditingController text = TextEditingController();
 
   @override
@@ -40,11 +40,11 @@ class JobView extends JobViewModel {
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.work),
-          label: "Job",
+          label: "İş ilanları",
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.account_circle),
-          label: "Profile",
+          label: "Profil",
         ),
       ],
       currentIndex: selectedIndex,
@@ -107,7 +107,7 @@ class JobView extends JobViewModel {
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Selam Önder"),
+          Text("Selam Doğukan"),
           Text(ApplicationStrings.instance.jobPageTitle)
         ],
       ),
@@ -147,24 +147,6 @@ class JobView extends JobViewModel {
             }
           }),
     );
-
-    /*CustomDropDownItem(
-        dropdownValue: model.selectedValue,
-        items: <CustomOrderEnums>[
-          CustomOrderEnums.tarih_artan,
-          CustomOrderEnums.tarih_azalan,
-          CustomOrderEnums.sirket_artan,
-          CustomOrderEnums.sirket_azalan,
-          CustomOrderEnums.puan_artan,
-          CustomOrderEnums.puan_azalan,
-        ].map<DropdownMenuItem<String>>((CustomOrderEnums value) {
-          return DropdownMenuItem<String>(
-            value: value.text,
-            child: Text(value.text),
-          );
-        }).toList(),
-        function: model.changeValue);
-    );*/
   }
 
   ListView buildListView() {
@@ -188,4 +170,5 @@ class JobView extends JobViewModel {
       },
     );
   }
+  
 }

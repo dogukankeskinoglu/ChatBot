@@ -73,6 +73,7 @@ class SignupCompanyView extends SignupCompanyViewModel{
       hinttext: ApplicationStrings.instance.inputCompanyNameHint,
       prefixIcon: Icon(Icons.account_circle),
       validator: ValidatorEnums.EmptyValidator,
+      padding: EdgeInsets.symmetric(vertical: 0),
       textcontroller: tcCompanyName,
     );
   }
@@ -82,6 +83,7 @@ class SignupCompanyView extends SignupCompanyViewModel{
       hinttext: ApplicationStrings.instance.inputUsernameHint,
       prefixIcon: Icon(Icons.insert_drive_file),
       validator: ValidatorEnums.EmptyValidator,
+      padding: EdgeInsets.symmetric(vertical: 0),
       textcontroller: tcCompanyUsername,
     );
   }
@@ -93,6 +95,7 @@ class SignupCompanyView extends SignupCompanyViewModel{
       keyboardType: TextInputType.emailAddress,
       prefixIcon: Icon(Icons.email_outlined),
       validator: ValidatorEnums.EmailLoginValidator,
+      padding: EdgeInsets.symmetric(vertical: 0),
       textcontroller: tcCompanyEmail,
     );
   }
@@ -103,6 +106,8 @@ class SignupCompanyView extends SignupCompanyViewModel{
       hinttext: ApplicationStrings.instance.inputPasswordHint,
       keyboardType: TextInputType.text,
       prefixIcon: Icon(Icons.lock),
+      obscure: true,
+      padding: EdgeInsets.symmetric(vertical: 0),
       validator: ValidatorEnums.PasswordLoginValidator,
       textcontroller: tcCompanyPassword,
     );
@@ -140,11 +145,9 @@ class SignupCompanyView extends SignupCompanyViewModel{
 
   Text textWelcome() {
     return Text(
-      "Welcome to Signup Page",
+      "İş Veren Üye Sayfası",
       style: TextStyle(
           fontSize: 30, fontWeight: FontWeight.bold, color: Colors.blue),
     );
   }
-
-  
 }

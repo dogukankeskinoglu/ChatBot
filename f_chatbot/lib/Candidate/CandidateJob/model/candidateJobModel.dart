@@ -1,6 +1,7 @@
+
 import 'package:f_chatbot/core/enum/jobAction.dart';
 
-class JobModel {
+class CandidateJobModel{
   final String domainName;
   final String companyName;
   final String location;
@@ -8,9 +9,8 @@ class JobModel {
   final double matchRate;
   JobActionEnum jobSituation;
 
-  JobModel(this.domainName, this.companyName, this.location, this.time,
+  CandidateJobModel(this.domainName, this.companyName, this.location, this.time,
       this.matchRate, this.jobSituation);
-
   @override
   String toString() {
     // TODO: implement toString

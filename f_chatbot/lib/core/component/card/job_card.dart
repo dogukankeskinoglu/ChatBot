@@ -1,10 +1,10 @@
+import 'package:f_chatbot/Candidate/CandidateJob/model/candidateJobModel.dart';
 import 'package:f_chatbot/core/component/circular_percantege/circular_percantage.dart';
-import 'package:f_chatbot/Job/model/job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:f_chatbot/core/enum/jobAction.dart';
 
 class JobCardWidget extends StatelessWidget {
-  final JobModel jmodel;
+  final CandidateJobModel jmodel;
   JobCardWidget(this.jmodel);
   @override
   Card build(BuildContext context) {
