@@ -11,23 +11,26 @@ import 'package:f_chatbot/page/load_page/loadPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class LoginCandidateView extends LoginCandidateViewModel{
-
+class LoginCandidateView extends LoginCandidateViewModel {
   @override
-    void initState() {
-      super.initState();
-      cEmail = TextEditingController();
-      cPassword = TextEditingController();
-      isLogin = UnauthenticatedEnum.FAIL;
-    }
+  void initState() {
+    super.initState();
+    cEmail = TextEditingController();
+    cPassword = TextEditingController();
+    isLogin = UnauthenticatedEnum.FAIL;
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: isLogin == UnauthenticatedEnum.FAIL
-            ? mainStack(size, context)
-            : LoadPage(page: CandidateJob()));
+      resizeToAvoidBottomInset: false,
+      body: isLogin == UnauthenticatedEnum.FAIL
+          ? mainStack(size, context)
+          : LoadPage(
+              page: CandidateJob(),
+            ),
+    );
   }
 
   Stack mainStack(Size size, BuildContext context) {
@@ -129,6 +132,4 @@ class LoginCandidateView extends LoginCandidateViewModel{
           fontSize: 30, fontWeight: FontWeight.bold, color: Colors.blue),
     );
   }
-
-  
 }

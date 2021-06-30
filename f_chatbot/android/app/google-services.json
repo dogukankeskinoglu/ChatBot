@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "751059701395",
+    "project_id": "hr-bot-68e2e",
+    "storage_bucket": "hr-bot-68e2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751059701395:android:e9421049ad30e7606f4766",
+        "android_client_info": {
+          "package_name": "com.example.f_chatbot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751059701395-7l4urgtiita07v42vlqoofuvq9i867pg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.f_chatbot",
+            "certificate_hash": "dbee22f99184557cc2e83c955739a4850e68dc40"
+          }
+        },
+        {
+          "client_id": "751059701395-kcopljch71vmlopjkbhvmmji3j2odrvd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIzFtqVpq2pFofJrGHbaf43-ISDs66vsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751059701395-kcopljch71vmlopjkbhvmmji3j2odrvd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

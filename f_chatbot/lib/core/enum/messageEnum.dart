@@ -1,0 +1,1 @@
+enum MessageEnum { RECEIVER, SENDER }
