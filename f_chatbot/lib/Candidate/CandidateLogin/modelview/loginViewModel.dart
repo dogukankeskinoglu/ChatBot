@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 abstract class LoginCandidateViewModel extends BaseStateFull<LoginCandidate>{
 
-  late final TextEditingController cEmail;
+  late final TextEditingController cUsername;
   late final TextEditingController cPassword;
   late UnauthenticatedEnum isLogin;
   final formKey = GlobalKey<FormState>();

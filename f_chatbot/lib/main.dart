@@ -5,6 +5,7 @@ import 'package:f_chatbot/Company/CompanyHome/companyHome.dart';
 import 'package:f_chatbot/Company/CompanyJob/ListJob/view/CompanyJobState.dart';
 import 'package:f_chatbot/Company/CompanyLogin/view/loginCompany.dart';
 import 'package:f_chatbot/Company/CompanySignup/view/signupCompany.dart';
+import 'package:f_chatbot/ProviderModel/chatbotModel.dart';
 import 'package:f_chatbot/ProviderModel/companyCreateModel.dart';
 import 'package:f_chatbot/ProviderModel/loginModel.dart';
 import 'package:f_chatbot/page/error_page/unknown_route.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => ChatBotModel()),
         ChangeNotifierProvider(create: (context) => CompanyCreateModel()),
         ChangeNotifierProvider(create: (context) => DropDownOrderModel()),
         ChangeNotifierProvider(create: (context) => LoginModel()),
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "ChatBot",
         routes: {
-          '/': (context) => Home(),
+          '/': (context) => Home(), //CandidateChat(), //Home(),
           '/CompanyHome': (context) => CompanyHome(
                 companyName: 'Company',
               ),
@@ -45,7 +47,9 @@ class MyApp extends StatelessWidget {
           '/CompanyJobs': (context) => CompanyJobState(),
           '/CreateJob': (context) => CompanyCreateJob(),
           //'/loginHome': (context) => LoginHome(),
-          '/jobPage': (context) => CandidateJob(),
+          '/jobPage': (context) => CandidateJob(
+                candidateName: "s",
+              ),
           '/loginPersonal': (context) => LoginCandidate(),
           '/loginCompany': (context) => LoginCompany(),
           '/createAccountPersonal': (context) => SignupCandidate(),

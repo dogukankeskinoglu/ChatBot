@@ -1,4 +1,4 @@
-import 'package:f_chatbot/Candidate/CandidateJob/view/candidateJob.dart';
+import 'package:f_chatbot/Candidate/CandidateChat/view/candidateChat.dart';
 import 'package:f_chatbot/Candidate/CandidateLogin/modelview/loginViewModel.dart';
 import 'package:f_chatbot/core/component/button/containerButton.dart';
 import 'package:f_chatbot/core/component/textFormField/customTextField.dart';
@@ -15,7 +15,7 @@ class LoginCandidateView extends LoginCandidateViewModel {
   @override
   void initState() {
     super.initState();
-    cEmail = TextEditingController();
+    cUsername = TextEditingController();
     cPassword = TextEditingController();
     isLogin = UnauthenticatedEnum.FAIL;
   }
@@ -27,9 +27,8 @@ class LoginCandidateView extends LoginCandidateViewModel {
       resizeToAvoidBottomInset: false,
       body: isLogin == UnauthenticatedEnum.FAIL
           ? mainStack(size, context)
-          : LoadPage(
-              page: CandidateJob(),
-            ),
+          : LoadPage(page: CandidateChat() //CandidateJob(),
+              ),
     );
   }
 
@@ -79,7 +78,7 @@ class LoginCandidateView extends LoginCandidateViewModel {
       keyboardType: TextInputType.emailAddress,
       prefixIcon: Icon(Icons.email_outlined),
       validator: ValidatorEnums.EmailLoginValidator,
-      textcontroller: cEmail,
+      textcontroller: cUsername,
     );
   }
 

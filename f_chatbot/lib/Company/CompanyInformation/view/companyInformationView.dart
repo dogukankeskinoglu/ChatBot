@@ -16,13 +16,13 @@ import 'package:provider/provider.dart';
 class CompanyInformationView extends CompanyInformationViewModel {
   @override
   Widget build(BuildContext context) {
-    return informationState==UnauthenticatedEnum.FAIL ?
-    Scaffold(
-      appBar: buildAppBar(),
-      body:  buildPadding()     
-    ): Scaffold(
-       body:LoadPage(page: CompanyHome(companyName: 'Company',))
-    );
+    return informationState == UnauthenticatedEnum.FAIL
+        ? Scaffold(appBar: buildAppBar(), body: buildPadding())
+        : Scaffold(
+            body: LoadPage(
+                page: CompanyHome(
+            companyName: 'Company',
+          )));
   }
 
   Padding buildPadding() {
@@ -196,7 +196,7 @@ class CompanyInformationView extends CompanyInformationViewModel {
 
   AppBar buildAppBar() {
     return AppBar(
-      title: Text("Company Information"),
+      title: Text("Company Bilgileri"),
     );
   }
 }

@@ -53,7 +53,7 @@ class Home extends StatelessWidget {
           imgSrc: ImagePathEnums.CandidateImage.img,
           text: ApplicationStrings.instance.loginHomeCandidate,
         ),
-        InkwellContainer(
+        /*InkwellContainer(
           onPressed: () {
             /*test["mesaj"] = "test";
             print("sa");
@@ -62,7 +62,7 @@ class Home extends StatelessWidget {
           },
           imgSrc: ImagePathEnums.CandidateImage.img,
           text: ApplicationStrings.instance.loginHomeCandidate,
-        ),
+        ),*/
       ],
     );
   }

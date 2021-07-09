@@ -10,7 +10,7 @@ class CompanyJobView extends CompanyListJobViewModel {
   }
 
   AppBar buildAppBar() {
-    return AppBar(title: Text("Company Jobs"));
+    return AppBar(title: Text("Company İlanlar"));
   }
 
   ListView buildJobColumn() {

@@ -10,7 +10,6 @@ abstract class CompanyListJobViewModel
   List<CompanyJob> companyJobs = [
     CompanyJob("Company", SectorEnums.Yazilim.sectorText, "Mobile Developer", "Android,Kotlin", CityLocation.ANKARA.cityName, DateTime.now()),
     CompanyJob("Company", SectorEnums.Yazilim.sectorText, ".NET Developer", "C#", CityLocation.IZMIR.cityName, DateTime.now()),
-    CompanyJob("Company", SectorEnums.Uretim.sectorText, "Fındık", "Yemekler şirkete dahil", CityLocation.TRABZON.cityName, DateTime.now()),
     CompanyJob("Company", SectorEnums.Yazilim.sectorText, "Backend Developer", "Node js,Dart", CityLocation.ISTANBUL.cityName, DateTime.now()),
   ];
 

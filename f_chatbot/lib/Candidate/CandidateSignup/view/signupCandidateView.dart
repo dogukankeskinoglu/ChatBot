@@ -10,13 +10,13 @@ import 'package:f_chatbot/page/background_page/opacity_background.dart';
 import 'package:f_chatbot/page/load_page/loadPage.dart';
 import 'package:flutter/material.dart';
 
-class SignupCandidateView extends SignupCandidateViewModel{
-
+class SignupCandidateView extends SignupCandidateViewModel {
   @override
-    void initState() {
-      super.initState();
-      isSignup = UnauthenticatedEnum.FAIL;
-    }
+  void initState() {
+    super.initState();
+    isSignup = UnauthenticatedEnum.FAIL;
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -24,7 +24,7 @@ class SignupCandidateView extends SignupCandidateViewModel{
         resizeToAvoidBottomInset: false,
         body: isSignup == UnauthenticatedEnum.FAIL
             ? mainStack(size, context)
-            : LoadPage(page: CandidateJob()));
+            : LoadPage(page: CandidateJob(candidateName: "Doğukan")));
   }
 
   Stack mainStack(Size size, BuildContext context) {
@@ -50,7 +50,7 @@ class SignupCandidateView extends SignupCandidateViewModel{
       child: Form(
         key: formKey,
         child: Container(
-          height: size.height*0.8,
+          height: size.height * 0.8,
           width: size.width,
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: Column(
@@ -69,8 +69,8 @@ class SignupCandidateView extends SignupCandidateViewModel{
     );
   }
 
-  CustomTextFormField customTextFormFieldNameSurname(){
-      return CustomTextFormField(
+  CustomTextFormField customTextFormFieldNameSurname() {
+    return CustomTextFormField(
       hinttext: ApplicationStrings.instance.inputNameSurnameHint,
       padding: EdgeInsets.symmetric(vertical: 0),
       prefixIcon: Icon(Icons.account_circle),
@@ -79,8 +79,8 @@ class SignupCandidateView extends SignupCandidateViewModel{
     );
   }
 
-  CustomTextFormField customTextFormFieldUsername(){
-      return CustomTextFormField(
+  CustomTextFormField customTextFormFieldUsername() {
+    return CustomTextFormField(
       hinttext: ApplicationStrings.instance.inputUsernameHint,
       padding: EdgeInsets.symmetric(vertical: 0),
       prefixIcon: Icon(Icons.insert_drive_file),
@@ -88,7 +88,6 @@ class SignupCandidateView extends SignupCandidateViewModel{
       textcontroller: cUsername,
     );
   }
-
 
   CustomTextFormField customTextFormFieldEmail() {
     return CustomTextFormField(
@@ -100,7 +99,6 @@ class SignupCandidateView extends SignupCandidateViewModel{
       textcontroller: cEmail,
     );
   }
-
 
   CustomTextFormField customTextFormFieldPassword() {
     return CustomTextFormField(
@@ -151,5 +149,4 @@ class SignupCandidateView extends SignupCandidateViewModel{
           fontSize: 30, fontWeight: FontWeight.bold, color: Colors.blue),
     );
   }
-
 }

@@ -11,6 +11,7 @@ class ApplicationStrings {
   ApplicationStrings._init();
 
   final String login = 'Giriş';
+  final String finishConversition = "İşleri göster";
   final String signup = "Kayıt olun";
   final String loginHomeCompany = UserEnum.Company.type;
   final String loginHomeCandidate = UserEnum.Candidate.type;

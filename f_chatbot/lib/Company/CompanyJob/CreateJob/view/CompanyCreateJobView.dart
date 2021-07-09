@@ -22,7 +22,7 @@ class CompanyCreateJobView extends CompanyCreateJobViewModel {
 
   AppBar buildAppBar() {
     return AppBar(
-      title: Text("Create Job"),
+      title: Text("İlan Oluştur"),
     );
   }
 

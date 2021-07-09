@@ -5,26 +5,29 @@ enum SectorEnums {
   BilgiTeknolojileri,
   Yazilim,
   Danismanlik,
-  Arge
+  Arge,
+  Hizmet,
 }
 
 extension SectorEnumPath on SectorEnums {
   String get sectorText {
     switch (this) {
       case SectorEnums.Arge:
-        return "ARGE";
+        return "arge";
       case SectorEnums.Satis:
-        return "SATIŞ";
+        return "satış";
+      case SectorEnums.Hizmet:
+        return "hizmet";
       case SectorEnums.Pazarlama:
-        return "PAZARLAMA";
+        return "pazarlama";
       case SectorEnums.BilgiTeknolojileri:
-        return "BİLGİ TEKNOLOJİLERİ";
+        return "bilgi teknolojileri";
       case SectorEnums.Yazilim:
-        return "YAZILIM";
+        return "yazılım";
       case SectorEnums.Danismanlik:
-        return "DANIŞMANLIK";
+        return "danışmanlık";
       case SectorEnums.Uretim:
-        return "URETIM";
+        return "üretim";
       default:
         return "UNKNOWN";
     }

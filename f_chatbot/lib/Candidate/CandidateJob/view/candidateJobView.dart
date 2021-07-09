@@ -1,4 +1,3 @@
-
 import 'package:f_chatbot/Candidate/CandidateJob/modelview/candidateJobViewModel.dart';
 import 'package:f_chatbot/ProviderModel/orderDropdown.dart';
 import 'package:f_chatbot/core/component/card/job_card.dart';
@@ -11,6 +10,10 @@ import 'package:provider/provider.dart';
 
 class CandidateJobView extends CandidateJobViewModel {
   TextEditingController text = TextEditingController();
+  String candidateName = "";
+  CandidateJobView(String candidateName) {
+    this.candidateName = candidateName;
+  }
 
   @override
   void initState() {
@@ -107,7 +110,7 @@ class CandidateJobView extends CandidateJobViewModel {
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Selam Doğukan"),
+          Text("Selam $candidateName"),
           Text(ApplicationStrings.instance.jobPageTitle)
         ],
       ),
@@ -170,5 +173,4 @@ class CandidateJobView extends CandidateJobViewModel {
       },
     );
   }
-  
 }
