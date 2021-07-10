@@ -6,7 +6,6 @@ class DropDownOrderModel extends ChangeNotifier {
 
   void changeValue(String newOrderName) {
     selectedValue = newOrderName;
-    print("girdi");
     notifyListeners();
   }
 }

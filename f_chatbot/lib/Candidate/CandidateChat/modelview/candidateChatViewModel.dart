@@ -238,7 +238,6 @@ abstract class CandidateChatViewModel extends BaseStateFull<CandidateChat> {
                 messageIndex += 4;
                 candidateAnswers.add("null");
                 candidateAnswers.add("null");
-                //candidateAnswers.add(message);
                 chatBotLive.add(ChatMessage(
                     Text(chatBotMessages[messageIndex][0]),
                     MessageEnum.RECEIVER));
@@ -402,7 +401,6 @@ abstract class CandidateChatViewModel extends BaseStateFull<CandidateChat> {
               "calistim",
             ].contains(message.toLowerCase())) {
               messageIndex += 9;
-              //Burda Kaldım
               candidateAnswers.add("null");
               candidateAnswers.add("null");
               candidateAnswers.add("null");
@@ -818,7 +816,6 @@ abstract class CandidateChatViewModel extends BaseStateFull<CandidateChat> {
             break;
           default:
         }
-        //chatBotLive.add(chatBotMessages(message, MessageEnum.SENDER));
 
         controller.animateTo(180 * chatBotLive.length.toDouble(),
             duration: Duration(milliseconds: 200), curve: Curves.ease);
@@ -849,13 +846,10 @@ abstract class CandidateChatViewModel extends BaseStateFull<CandidateChat> {
     ],
     ["Nerede yaşıyorsun?", "null"],
     ["Nerelisin?", "null"],
-
     [
       "Eğitim durumun nedir? (Lise mezunuyum], üniversite okuyorum vb.)",
       "null"
     ],
-
-    //Uni Mezun
     [
       "Hangi senede mezun oldun?",
       "Mezuniyet tarihini doğru girdiğinden emin misin?"
@@ -866,20 +860,15 @@ abstract class CandidateChatViewModel extends BaseStateFull<CandidateChat> {
       "GNO puanını yazabilir misin?",
       "Rakamları kullanarak tekrardan yazar mısın?"
     ],
-    //Uni Okuma
     ["Hangi üniversitede okuyorsun?", "null"],
     ["Hangi bölümde okuyorsun?", "null"],
     ["Şu andaki GNO'n kaç?", "Rakamları kullanarak tekrardan yazar mısın?"],
-
-    //Çalışma durumu
     [
       "Peki şu anda çalışıyor musun?",
       "Söylediğinizi anlayamadım. Kısa yanıt olarak evet veya hayır diyebilirsiniz"
     ],
-    //1*Evet],çalışıyorum],calisiyorum
     ["Hangi sektörde çalışmaktasın?", "null"],
     ["Çalıştığın şirketin ismi nedir?", "null"],
-
     [
       "Bu şirkette kaç aydır çalışmaktasın?",
       "Lütfen sayı cinsinden geçerli bir değer gir."
@@ -888,20 +877,16 @@ abstract class CandidateChatViewModel extends BaseStateFull<CandidateChat> {
       "Bu işinizden önce başka bir deneyiminiz oldu mu?",
       "Ne dediğini anlayamadım, evet veya hayır olarak cevaplayabilir misin?"
     ],
-
-    //Evet],oldu
     ["Hangi sektörde çalıştın?", "null"],
     ["Hangi şirkette çalıştın?", "null"],
     [
       "Ne kadar süre (ay değerinden) çalıştın?",
       "Sanırım cevabını rakam kullanmadan girdin. Tekrardan rakam ile yazma şansın var mı ?"
     ],
-    //1*Hayır],çalışmıyorum
     [
       "İlk defa mı çalışacaksınız?",
       "Ne dediğini anlayamadım, evet veya hayır olarak cevaplayabilir misin?"
     ],
-    //Hayır ise
     ["Daha önce hangi sektörde çalıştın?", "null"],
     ["Hangi şirkette çalıştın?", "null"],
     [
@@ -909,22 +894,16 @@ abstract class CandidateChatViewModel extends BaseStateFull<CandidateChat> {
       "Sanırım cevabını rakam kullanmadan girdin. Tekrardan rakam ile yazma şansın var mı ?"
     ],
     ["Eski işinden ayrılma sebebin neydi?", "null"],
-
-    //"s"
     [
       "Son olarak kaç yıllık tecrübeye sahipsin?",
       "Sanırım cevabını rakam kullanmadan girdin. Tekrardan rakam ile yazma şansın var mı ?"
     ],
-
     ["Hangi sektör/sektörlerde çalışmak istiyorsun?", "null"],
-
     [
       "Büyük bir şirketi mi yoksa daha özelleşmiş şirketleri tercih edersin?",
       "null"
     ],
-
     ["Peki part time/staj ya da full time'dan hangisini arıyorsunuz?", "null"],
-
     [
       "Uzaktan çalışmayı düşünüyor musunuz?",
       "Ne dediğini anlayamadım, evet veya hayır olarak cevaplayabilir misin?"
@@ -937,17 +916,14 @@ abstract class CandidateChatViewModel extends BaseStateFull<CandidateChat> {
       "Daha önce yurt dışına gittiniz mi?",
       "Ne dediğini anlayamadım, evet veya hayır olarak cevaplayabilir misin?"
     ],
-    //Evet],gittim
     [
       "Hangi dilleri biliyorsun ve seviyen ne?(Herhangi bir yabancı dil sınavına girdiysen puanın)",
       "Beklenenin dışında cevap verdiniz. Sanırım kendimi tam ifade edemedim. İpucu olarak YDS,80 şeklinde yazabilirsin."
     ],
-
     [
       "İş konusunda en iyi olduğunu düşündüğün yetenekler neler? Rica etsem aralarında virgül olacak şekilde yazar mısın?",
       "null"
     ],
-
     [
       "Aylık maaş beklentin TL cinsinden nedir?",
       "Hımm. Cevabına bakacak olursam en az bir tane harf kullanmışsın. Heyecan yapmadan tekrardan beklediğin maaşı yazar mısın ? :)"
@@ -956,65 +932,30 @@ abstract class CandidateChatViewModel extends BaseStateFull<CandidateChat> {
       "En iyi 3 özelliğin nedir? Bu soruyu cevaplarken iyi düşün. Biliyorum çok fazla iyi olduğun nokta var ama bize en dikkat çekebilecekleri lazım. Az kalsın unutuyordum. Özelliklerinin arasına virgül koyabilir misin",
       "Görüyorum ki 3 tane özellik yazmamışsın veya virgül koymayı unutmuşsun. Benden sana ipucu zeki,çalışkan,güvenilir"
     ],
-
     [
       "Kötü olduğunu düşündüğün 3 özelliğin nedir? Dürüst olman bizim için çok önemli.",
       "Görüyorum ki 3 tane özellik yazmamışsın veya virgül koymayı unutmuşsun. Benden sana ipucu tembel,sabırsız,inatçılı"
     ],
-
     [
       "Halihazırda bulunduğun herhangi bir topluluk/ekip/dernek var mı? Evet veya hayır demen bizim için yeterli. Sonlara doğru seni çok yormak istemiyorum",
       "Evet mi hayır mı tam anlayamadım?"
     ],
-
-    //Evet
     ["Hangi topluluk/topluluklarda rol almaktasın?", "null"],
-    //Hayır
-
     [
       "Daha önce bulunduğun herhangi bir topluluk var mı?",
       "Evet mi hayır mı tam anlayamadım?"
     ],
-    //Evet
     ["En son olduğun topluluğu yazar mısın", "null"],
-
-    //Tel
     [
       "Size ulaşabilmemiz için telefon numaranızı yazar mısınız? 05******** şeklinde yazar mısın",
       "Beklediğim şekilde girmemişsin.Sadece rakamlardan oluşacak şekilde tekrardan yazabilir misin"
     ],
-
     [
       "Size ulaşabilmemiz için mailinizi yazar mısınız?",
       " Yazdığın email geçerli değil. Tekrardan yazar mısın?"
     ],
-
     [
       "Bana zaman ayırdığın için çok teşekkür ederim! Bilgilerini kaydettik, sonraki aşamada bu bilgiler ışığında sana en uygun iş ilanlarını listeliyor olacağız! :)"
     ],
   ];
 }
-/**
- Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButtonFormField(
-                        value: CityLocation.ADANA.cityName,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10))),
-                        items: CityLocation.values
-                            .map<DropdownMenuItem<String>>(
-                                (CityLocation value) =>
-                                    DropdownMenuItem<String>(
-                                      value: value.cityName,
-                                      child: Text(
-                                        value.cityName,
-                                        textAlign: TextAlign.start,
-                                      ),
-                                    ))
-                            .toList(),
-                      ),
-                    ),
-                  ),
-*/

@@ -18,14 +18,26 @@ class CompanyJobView extends CompanyListJobViewModel {
         itemCount: companyJobs.length,
         itemBuilder: (context, index) {
           return InkWell(
-              onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CompanyCandidate(
-                              jobTitle: companyJobs[index].title,
-                            )),
-                  ),
-              child: CompanyJobCard(companyJobs[index], index+1));
+              onTap: () =>
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    if (index == 0) {
+                      return CompanyCandidate(
+                        job: companyJobs[index],
+                        employees: [employees[0], employees[1], employees[2]],
+                      );
+                    } else if (index == 1) {
+                      return CompanyCandidate(
+                        job: companyJobs[index],
+                        employees: [employees[3], employees[4], employees[5]],
+                      );
+                    } else {
+                      return CompanyCandidate(
+                        job: companyJobs[index],
+                        employees: [employees[1]],
+                      );
+                    }
+                  })),
+              child: CompanyJobCard(companyJobs[index], index + 1));
         });
   }
 }

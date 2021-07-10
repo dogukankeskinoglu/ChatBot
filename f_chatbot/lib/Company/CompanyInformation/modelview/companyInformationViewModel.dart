@@ -19,14 +19,7 @@ abstract class CompanyInformationViewModel extends BaseStateFull<CompanyInformat
   final formKey = GlobalKey<FormState>();
 
   void saveButton() {
-    /*print(tcCompanyName.text);
-    print(tcCompanyDescription.text);
-    print(tcCompanyTelephone.text);
-    print(tcCompanyEmail.text);
-    print(tcCmpanyWebsite.text);
-    print(selectedCityValue);
-    print(selectedDate);
-    print(selectedSector);*/
+    
     setState(() {
       if (formKey.currentState!.validate()) {
         informationState = UnauthenticatedEnum.SUCCESSFULL;

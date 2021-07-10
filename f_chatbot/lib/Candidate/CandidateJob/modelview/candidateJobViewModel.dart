@@ -132,7 +132,6 @@ abstract class CandidateJobViewModel extends BaseStateFull<CandidateJob>{
           buildFlutterToast(ApplicationStrings.instance.jobAlreadyAccept);
         } else {
           jobListApply.add(item);
-          print(jobListApply.length);
           item.jobSituation = JobActionEnum.apply;
         }
         break;

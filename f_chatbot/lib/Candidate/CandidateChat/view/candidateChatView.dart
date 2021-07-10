@@ -122,7 +122,6 @@ class CandidateChatView extends CandidateChatViewModel {
 
   Row buildDropDown(int messageIndex) {
     late final dropdownChild;
-    print(messageIndex);
     switch (messageIndex) {
       case 5:
         dropdownChild = buildConsumerLocationCityDropDown();
@@ -182,7 +181,7 @@ class CandidateChatView extends CandidateChatViewModel {
       children: [
         Expanded(
             flex: 9,
-            child: dropdownChild), //messageIndex==5 ? Text("SA") : Text("s")),
+            child: dropdownChild),
         Expanded(
             flex: 1,
             child: GestureDetector(

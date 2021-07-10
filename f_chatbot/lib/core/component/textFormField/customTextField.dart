@@ -41,14 +41,11 @@ class CustomTextFormField extends StatelessWidget {
             hintText: hinttext),
         validator: (value) {
           if (value == null) {
-            print(TextFormFieldException);
           } else {
             switch (validator) {
               case ValidatorEnums.EmailLoginValidator:
-                print("emailpassword");
                 return isValidateEmail(textcontroller.text);
               case ValidatorEnums.PasswordLoginValidator:
-                print("loginpassword");
                 return isPasswordValid(textcontroller.text);
               case ValidatorEnums.EmptyValidator:
                 return isEmptyValue(textcontroller.text);

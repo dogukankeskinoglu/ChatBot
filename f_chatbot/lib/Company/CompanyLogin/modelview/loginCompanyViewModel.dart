@@ -13,16 +13,8 @@ abstract class LoginCompanyViewModel extends BaseStateFull<LoginCompany> {
 
   void login() {
     setState(() {
-      if (formKey.currentState!.validate() &&
-          isValidUsername(cCompanyName.text) &&
-          isValidPassword(cPassword.text)) {
+      if (formKey.currentState!.validate()) {
         isLogin = UnauthenticatedEnum.SUCCESSFULL;
-      } 
-      else if (formKey.currentState!.validate()) {
-        isLogin = UnauthenticatedEnum.FAIL;
-      } 
-      else {
-        isLogin = UnauthenticatedEnum.INVALID;
       }
     });
   }

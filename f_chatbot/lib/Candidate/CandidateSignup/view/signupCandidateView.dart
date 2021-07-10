@@ -1,3 +1,4 @@
+import 'package:f_chatbot/Candidate/CandidateChat/view/candidateChat.dart';
 import 'package:f_chatbot/Candidate/CandidateJob/view/candidateJob.dart';
 import 'package:f_chatbot/Candidate/CandidateSignup/modelview/signupViewModel.dart';
 import 'package:f_chatbot/core/component/button/containerButton.dart';
@@ -24,7 +25,7 @@ class SignupCandidateView extends SignupCandidateViewModel {
         resizeToAvoidBottomInset: false,
         body: isSignup == UnauthenticatedEnum.FAIL
             ? mainStack(size, context)
-            : LoadPage(page: CandidateJob(candidateName: "Doğukan")));
+            : LoadPage(page: CandidateChat()));
   }
 
   Stack mainStack(Size size, BuildContext context) {

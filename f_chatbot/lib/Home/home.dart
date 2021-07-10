@@ -53,16 +53,7 @@ class Home extends StatelessWidget {
           imgSrc: ImagePathEnums.CandidateImage.img,
           text: ApplicationStrings.instance.loginHomeCandidate,
         ),
-        /*InkwellContainer(
-          onPressed: () {
-            /*test["mesaj"] = "test";
-            print("sa");
-            refTest.set(test);*/
-            Navigator.pushNamed(context, "/CandidateChat");
-          },
-          imgSrc: ImagePathEnums.CandidateImage.img,
-          text: ApplicationStrings.instance.loginHomeCandidate,
-        ),*/
+        
       ],
     );
   }

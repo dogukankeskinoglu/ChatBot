@@ -136,9 +136,7 @@ class CandidateJobView extends CandidateJobViewModel {
             );
           }).toList(),
           onChanged: (String? newValue) {
-            print("O:$dropdownValue N:$newValue G:N");
             if (dropdownValue != newValue) {
-              print("O:$dropdownValue N:$newValue G:E");
               CustomOrderEnums.values.forEach((element) {
                 if (element.text == newValue) {
                   orderByMatch(element);
@@ -168,9 +166,7 @@ class CandidateJobView extends CandidateJobViewModel {
     return OutlineSearchBar(
       hintText: ApplicationStrings.instance.jobSearchTitle,
       textEditingController: text,
-      onSearchButtonPressed: (value) {
-        print(value);
-      },
+      onSearchButtonPressed: (value) {},
     );
   }
 }

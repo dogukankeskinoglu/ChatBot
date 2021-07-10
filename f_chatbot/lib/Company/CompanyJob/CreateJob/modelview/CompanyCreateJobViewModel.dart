@@ -15,11 +15,11 @@ abstract class CompanyCreateJobViewModel
   final formKey = GlobalKey<FormState>();
 
   void saveButton() {
-    print(tcTitle.text);
-    print(tcDescription.text);
     setState(() {
       if (formKey.currentState!.validate()) {
         jobState = UnauthenticatedEnum.SUCCESSFULL;
+        tcTitle.text = "";
+        tcDescription.text = "";
       }
     });
   }
